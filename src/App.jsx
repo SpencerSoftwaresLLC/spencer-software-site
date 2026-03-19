@@ -45,11 +45,22 @@ function Layout({ children }) {
       >
         <div>
           <div style={{ fontSize: 28, fontWeight: 800 }}>Spencer Softwares LLC</div>
-          <div style={{ color: palette.sand, fontSize: 14 }}>Software that keeps real business moving</div>
+          <div style={{ color: palette.sand, fontSize: 14 }}>
+            Software that keeps real business moving
+          </div>
         </div>
 
-        <nav style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" }}>
-          <Link style={navLinkStyle} to="/">Home</Link>
+        <nav
+          style={{
+            display: "flex",
+            gap: 18,
+            flexWrap: "wrap",
+            alignItems: "center",
+          }}
+        >
+          <Link style={navLinkStyle} to="/">
+            Home
+          </Link>
 
           <div style={{ position: "relative" }}>
             <button
@@ -76,39 +87,86 @@ function Layout({ children }) {
             )}
           </div>
 
-          <Link style={navLinkStyle} to="/terraledger">Pricing</Link>
-          <Link style={navLinkStyle} to="/about">About</Link>
-          <Link style={navLinkStyle} to="/contact">Contact</Link>
-          <Link style={navButtonSecondary} to="/login">Customer Login</Link>
-          <Link style={navButtonPrimary} to="/terraledger">Get Started</Link>
+          <Link style={navLinkStyle} to="/pricing">
+            Pricing
+          </Link>
+          <Link style={navLinkStyle} to="/about">
+            About
+          </Link>
+          <Link style={navLinkStyle} to="/contact">
+            Contact
+          </Link>
+          <Link style={navButtonSecondary} to="/login">
+            Customer Login
+          </Link>
+          <Link style={navButtonPrimary} to="/terraledger">
+            Get Started
+          </Link>
         </nav>
       </header>
 
       <main>{children}</main>
 
-      <footer style={{ borderTop: `1px solid ${palette.border}`, marginTop: 60, padding: "28px 32px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24 }}>
+      <footer
+        style={{
+          borderTop: `1px solid ${palette.border}`,
+          marginTop: 60,
+          padding: "28px 32px",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: 24,
+          }}
+        >
           <div>
             <div style={{ fontWeight: 700, fontSize: 20 }}>Spencer Softwares LLC</div>
             <p style={{ color: palette.sand, lineHeight: 1.7 }}>
-              Business software built for quoting, invoicing, payroll, bookkeeping, and day-to-day operations.
+              Business software built for quoting, invoicing, payroll,
+              bookkeeping, and day-to-day operations.
             </p>
           </div>
           <div>
             <div style={footerTitle}>Products</div>
-            <div><Link style={footerLink} to="/terraledger">TerraLedger</Link></div>
-            <div><Link style={footerLink} to="/login">Customer Login</Link></div>
+            <div>
+              <Link style={footerLink} to="/terraledger">
+                TerraLedger
+              </Link>
+            </div>
+            <div>
+              <Link style={footerLink} to="/login">
+                Customer Login
+              </Link>
+            </div>
           </div>
           <div>
             <div style={footerTitle}>Company</div>
-            <div><Link style={footerLink} to="/about">About</Link></div>
-            <div><Link style={footerLink} to="/contact">Contact</Link></div>
+            <div>
+              <Link style={footerLink} to="/about">
+                About
+              </Link>
+            </div>
+            <div>
+              <Link style={footerLink} to="/contact">
+                Contact
+              </Link>
+            </div>
           </div>
           <div>
             <div style={footerTitle}>Legal & Business</div>
-            <div style={{ color: palette.sand, lineHeight: 1.8 }}>SpencerSoftwaresLLC.com is the home for the company brand, product access, and software growth.</div>
-            <div style={{ color: palette.sand, lineHeight: 1.8 }}>EIN secured and company foundation in motion.</div>
-            <div style={{ color: palette.sand, lineHeight: 1.8 }}>© Spencer Softwares LLC</div>
+            <div style={{ color: palette.sand, lineHeight: 1.8 }}>
+              SpencerSoftwaresLLC.com is the home for the company brand, product
+              access, and software growth.
+            </div>
+            <div style={{ color: palette.sand, lineHeight: 1.8 }}>
+              Built to support software products with clean branding, pricing,
+              and customer access.
+            </div>
+            <div style={{ color: palette.sand, lineHeight: 1.8 }}>
+              © Spencer Softwares LLC
+            </div>
           </div>
         </div>
       </footer>
@@ -124,34 +182,82 @@ function HomePage() {
           <div style={eyebrowStyle}>SpencerSoftwaresLLC.com</div>
           <h1 style={heroTitleStyle}>Software built to keep work moving.</h1>
           <p style={heroTextStyle}>
-            SpencerSoftwaresLLC.com is the main home for TerraLedger and future software products built for companies that need cleaner operations, stronger billing workflows, and a better way to manage real business activity.
+            Spencer Softwares is the home for TerraLedger and future software
+            products built for companies that need cleaner operations, stronger
+            billing workflows, and a better way to manage real business
+            activity.
           </p>
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 28 }}>
-            <Link style={navButtonPrimary} to="/terraledger">Buy TerraLedger</Link>
-            <Link style={navButtonSecondary} to="/terraledger">Explore Product</Link>
+          <div
+            style={{
+              display: "flex",
+              gap: 14,
+              flexWrap: "wrap",
+              marginTop: 28,
+            }}
+          >
+            <Link style={navButtonPrimary} to="/terraledger">
+              Buy TerraLedger
+            </Link>
+            <Link style={navButtonSecondary} to="/terraledger">
+              Explore Product
+            </Link>
           </div>
         </div>
 
         <div style={heroCardStyle}>
           <div style={panelStyle}>
-            <div style={{ color: palette.sand, fontSize: 14 }}>Featured Product</div>
-            <div style={{ fontSize: 32, fontWeight: 800, marginTop: 10 }}>TerraLedger</div>
-            <p style={{ color: palette.text, lineHeight: 1.8, opacity: 0.92 }}>
-              Quotes, invoices, jobs, payroll, bookkeeping, customers, and daily office control in one platform.
+            <div style={{ color: palette.sand, fontSize: 14 }}>
+              Featured Product
+            </div>
+            <div style={{ fontSize: 32, fontWeight: 800, marginTop: 10 }}>
+              TerraLedger
+            </div>
+            <p
+              style={{
+                color: palette.text,
+                lineHeight: 1.8,
+                opacity: 0.92,
+              }}
+            >
+              Quotes, invoices, jobs, payroll, bookkeeping, customers, and
+              daily office control in one platform.
             </p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
             <div style={panelStyle}>
-              <div style={{ color: palette.sand, fontSize: 14 }}>Website Flow</div>
-              <div style={{ fontWeight: 700, marginTop: 8 }}>Website-first access</div>
-              <div style={{ color: palette.text, opacity: 0.92, marginTop: 8, lineHeight: 1.6 }}>
-                Customers subscribe through SpencerSoftwaresLLC.com, then TerraLedger access unlocks.
+              <div style={{ color: palette.sand, fontSize: 14 }}>
+                Website Flow
+              </div>
+              <div style={{ fontWeight: 700, marginTop: 8 }}>
+                Website-first access
+              </div>
+              <div
+                style={{
+                  color: palette.text,
+                  opacity: 0.92,
+                  marginTop: 8,
+                  lineHeight: 1.6,
+                }}
+              >
+                Customers subscribe through SpencerSoftwaresLLC.com, then
+                TerraLedger access unlocks.
               </div>
             </div>
             <div style={panelStyle}>
-              <div style={{ color: palette.sand, fontSize: 14 }}>Access Model</div>
-              <div style={{ fontWeight: 700, marginTop: 8 }}>Subscription-gated</div>
-              <div style={{ color: palette.text, opacity: 0.92, marginTop: 8, lineHeight: 1.6 }}>
+              <div style={{ color: palette.sand, fontSize: 14 }}>
+                Access Model
+              </div>
+              <div style={{ fontWeight: 700, marginTop: 8 }}>
+                Subscription-gated
+              </div>
+              <div
+                style={{
+                  color: palette.text,
+                  opacity: 0.92,
+                  marginTop: 8,
+                  lineHeight: 1.6,
+                }}
+              >
                 No active plan means no active product access.
               </div>
             </div>
@@ -164,7 +270,9 @@ function HomePage() {
           <div style={eyebrowStyle}>Why Spencer Softwares</div>
           <h2 style={sectionTitleStyle}>Built for real operators, not just demos.</h2>
           <p style={sectionTextStyle}>
-            The Spencer Softwares brand should feel professional, trustworthy, and ready to grow into multiple software products over time.
+            Spencer Softwares is being shaped to feel professional,
+            trustworthy, and ready to grow into multiple software products over
+            time.
           </p>
         </div>
 
@@ -205,7 +313,11 @@ function TerraLedgerPage() {
       price: "$139",
       sub: "/month",
       note: "Flexible recurring access for teams that want a monthly billing cycle.",
-      details: ["Full TerraLedger access", "Subscription-gated account access", "Billing handled on SpencerSoftwaresLLC.com"],
+      details: [
+        "Full TerraLedger access",
+        "Subscription-gated account access",
+        "Billing handled on SpencerSoftwaresLLC.com",
+      ],
       button: "Start Monthly",
       accent: palette.orange,
       badge: "Monthly Billing",
@@ -215,7 +327,11 @@ function TerraLedgerPage() {
       price: "$1,168",
       sub: "/year",
       note: "Best value for full-time use with stronger long-term savings.",
-      details: ["Full TerraLedger access", "Annual billing value", "Billing handled on SpencerSoftwaresLLC.com"],
+      details: [
+        "Full TerraLedger access",
+        "Annual billing value",
+        "Billing handled on SpencerSoftwaresLLC.com",
+      ],
       button: "Start Yearly",
       accent: palette.green,
       badge: "Best Value",
@@ -228,7 +344,9 @@ function TerraLedgerPage() {
         <div style={eyebrowStyle}>Product</div>
         <h1 style={pageTitleStyle}>TerraLedger</h1>
         <p style={pageTextStyle}>
-          TerraLedger is the flagship software product under Spencer Softwares, designed for companies that need operational control without juggling disconnected systems.
+          TerraLedger is the flagship software product under Spencer Softwares,
+          designed for companies that need operational control without juggling
+          disconnected systems.
         </p>
       </section>
 
@@ -238,7 +356,9 @@ function TerraLedgerPage() {
             <h2 style={cardHeadingStyle}>What TerraLedger Handles</h2>
             <div style={{ display: "grid", gap: 12, marginTop: 18 }}>
               {features.map((item) => (
-                <div key={item} style={listItemStyle}>{item}</div>
+                <div key={item} style={listItemStyle}>
+                  {item}
+                </div>
               ))}
             </div>
           </div>
@@ -246,10 +366,14 @@ function TerraLedgerPage() {
           <div style={cardStyle}>
             <h2 style={cardHeadingStyle}>Who It Is For</h2>
             <p style={cardTextStyle}>
-              TerraLedger is built for landscaping, hauling, yard material, field service, and growing local businesses that need reliable office software for daily operations.
+              TerraLedger is built for landscaping, hauling, yard material,
+              field service, and growing local businesses that need reliable
+              office software for daily operations.
             </p>
             <div style={{ marginTop: 24 }}>
-              <a style={navButtonPrimary} href="#pricing">View TerraLedger Pricing</a>
+              <a style={navButtonPrimary} href="#pricing">
+                View TerraLedger Pricing
+              </a>
             </div>
           </div>
         </div>
@@ -258,15 +382,24 @@ function TerraLedgerPage() {
       <section id="pricing" style={{ ...sectionStyle, paddingTop: 8 }}>
         <div style={sectionHeadingWrap}>
           <div style={eyebrowStyle}>TerraLedger Pricing</div>
-          <h2 style={sectionTitleStyle}>Choose the TerraLedger plan that fits your business.</h2>
+          <h2 style={sectionTitleStyle}>
+            Choose the TerraLedger plan that fits your business.
+          </h2>
           <p style={sectionTextStyle}>
-            Each software product should have its own dedicated pricing page. TerraLedger pricing lives here so customers go straight from product details to the correct checkout flow.
+            TerraLedger pricing lives here so customers go straight from product
+            details to the correct checkout flow.
           </p>
         </div>
 
         <div style={pricingGridStyle}>
           {plans.map((plan) => (
-            <div key={plan.name} style={{ ...pricingCardStyle, borderTop: `4px solid ${plan.accent}` }}>
+            <div
+              key={plan.name}
+              style={{
+                ...pricingCardStyle,
+                borderTop: `4px solid ${plan.accent}`,
+              }}
+            >
               <div style={pricingCardHeaderStyle}>
                 <div>
                   <div style={pricingPlanLabelStyle}>{plan.name}</div>
@@ -275,7 +408,13 @@ function TerraLedgerPage() {
                     <span style={pricingSubStyle}>{plan.sub}</span>
                   </div>
                 </div>
-                <div style={{ ...pricingBadgeStyle, background: `${plan.accent}22`, border: `1px solid ${plan.accent}55` }}>
+                <div
+                  style={{
+                    ...pricingBadgeStyle,
+                    background: `${plan.accent}22`,
+                    border: `1px solid ${plan.accent}55`,
+                  }}
+                >
                   {plan.badge}
                 </div>
               </div>
@@ -293,11 +432,29 @@ function TerraLedgerPage() {
 
               <div style={pricingBottomWrapStyle}>
                 {plan.name === "Monthly" ? (
-                  <a href="https://buy.stripe.com/bJe4gBepbbha5R05z8djO00" target="_blank" rel="noopener noreferrer" style={{...primaryButtonStyle, display:"inline-block", textAlign:"center"}}>
+                  <a
+                    href="https://buy.stripe.com/bJe4gBepbbha5R05z8djO00"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      ...primaryButtonStyle,
+                      display: "inline-block",
+                      textAlign: "center",
+                    }}
+                  >
                     {plan.button}
                   </a>
                 ) : (
-                  <a href="https://buy.stripe.com/dRmdRbftf5WQ3IS2mWdjO01" target="_blank" rel="noopener noreferrer" style={{...primaryButtonStyle, display:"inline-block", textAlign:"center"}}>
+                  <a
+                    href="https://buy.stripe.com/dRmdRbftf5WQ3IS2mWdjO01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      ...primaryButtonStyle,
+                      display: "inline-block",
+                      textAlign: "center",
+                    }}
+                  >
                     {plan.button}
                   </a>
                 )}
@@ -317,7 +474,8 @@ function PricingPage() {
         <div style={eyebrowStyle}>Product Pricing</div>
         <h1 style={pageTitleStyle}>Choose a software product to view its pricing.</h1>
         <p style={pageTextStyle}>
-          Each product under Spencer Softwares should lead to its own dedicated pricing experience so customers land on the correct checkout path.
+          Each product under Spencer Softwares should lead to its own dedicated
+          pricing experience so customers land on the correct checkout path.
         </p>
       </section>
 
@@ -327,10 +485,13 @@ function PricingPage() {
             <div style={pricingMiniLabelStyle}>Available now</div>
             <div style={pricingMiniTitleStyle}>TerraLedger</div>
             <p style={pricingMiniTextStyle}>
-              View TerraLedger features, pricing options, and its dedicated purchase flow all in one place.
+              View TerraLedger features, pricing options, and its dedicated
+              purchase flow all in one place.
             </p>
             <div style={{ marginTop: 18 }}>
-              <Link style={navButtonPrimary} to="/terraledger#pricing">View TerraLedger Pricing</Link>
+              <Link style={navButtonPrimary} to="/terraledger#pricing">
+                View TerraLedger Pricing
+              </Link>
             </div>
           </div>
         </div>
@@ -346,7 +507,9 @@ function AboutPage() {
         <div style={eyebrowStyle}>About</div>
         <h1 style={pageTitleStyle}>Building software with a business-first mindset.</h1>
         <p style={pageTextStyle}>
-          Spencer Softwares is being built as a company brand for software products focused on practical operations, clear billing, and tools that help businesses run smoother.
+          Spencer Softwares is being built as a company brand for software
+          products focused on practical operations, clear billing, and tools
+          that help businesses run smoother.
         </p>
       </section>
 
@@ -355,13 +518,17 @@ function AboutPage() {
           <div style={cardStyle}>
             <h2 style={cardHeadingStyle}>The Goal</h2>
             <p style={cardTextStyle}>
-              Create software that solves actual work problems instead of adding complexity. TerraLedger is the first step, and it sets the direction for the rest of the brand.
+              Create software that solves actual work problems instead of adding
+              complexity. TerraLedger is the first step, and it sets the
+              direction for the rest of the brand.
             </p>
           </div>
           <div style={cardStyle}>
             <h2 style={cardHeadingStyle}>The Structure</h2>
             <p style={cardTextStyle}>
-              SpencerSoftwaresLLC.com handles branding, trust, pricing, and checkout. The app handles product usage and requires an active subscription to unlock access.
+              SpencerSoftwaresLLC.com handles branding, trust, pricing, and
+              checkout. The app handles product usage and requires an active
+              subscription to unlock access.
             </p>
           </div>
         </div>
@@ -371,24 +538,207 @@ function AboutPage() {
 }
 
 function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState("");
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+    setStatusMessage("");
+    setStatusType("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.error || "Something went wrong while sending your message.");
+      }
+
+      setStatusMessage("Your message has been sent successfully. We’ll be in touch soon.");
+      setStatusType("success");
+
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      setStatusMessage(error.message || "Unable to send your message right now.");
+      setStatusType("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <Layout>
       <section style={pageHeroStyle}>
         <div style={eyebrowStyle}>Contact</div>
-        <h1 style={pageTitleStyle}>Let’s talk about your business.</h1>
+        <h1 style={pageTitleStyle}>Tell us about your business needs.</h1>
         <p style={pageTextStyle}>
-          This page can become your live contact form, support channel, or demo request page once you wire it to email or a form service.
+          Whether you need a better workflow, cleaner billing, or software built
+          around the way your business actually operates, Spencer Softwares is
+          focused on practical solutions that help companies run more
+          efficiently.
         </p>
       </section>
 
       <section style={sectionStyle}>
-        <div style={{ ...cardStyle, maxWidth: 820, margin: "0 auto" }}>
-          <div style={{ display: "grid", gap: 14 }}>
-            <input style={inputStyle} placeholder="Your name" />
-            <input style={inputStyle} placeholder="Your email" />
-            <input style={inputStyle} placeholder="Company name" />
-            <textarea style={textareaStyle} placeholder="Tell us what you need" />
-            <button style={primaryButtonStyle}>Send Inquiry</button>
+        <div style={contactWrapStyle}>
+          <div style={contactInfoCardStyle}>
+            <div style={contactMiniLabelStyle}>Professional Consultation</div>
+            <h2 style={contactTitleStyle}>Let’s start the conversation.</h2>
+            <p style={contactBodyStyle}>
+              Share a few details about your company and what you are looking to
+              improve. This page is built for product inquiries, software
+              questions, support requests, and future custom software
+              discussions.
+            </p>
+
+            <div style={contactPointsWrapStyle}>
+              <div style={contactPointStyle}>
+                <span style={contactPointBulletStyle}>•</span>
+                <span>Product questions and software inquiries</span>
+              </div>
+              <div style={contactPointStyle}>
+                <span style={contactPointBulletStyle}>•</span>
+                <span>Operational workflow improvement discussions</span>
+              </div>
+              <div style={contactPointStyle}>
+                <span style={contactPointBulletStyle}>•</span>
+                <span>Future custom software opportunities</span>
+              </div>
+            </div>
+          </div>
+
+          <div style={contactFormCardStyle}>
+            <form onSubmit={handleSubmit} style={contactFormGridStyle}>
+              <div style={fieldWrapStyle}>
+                <label style={fieldLabelStyle}>Full Name</label>
+                <input
+                  style={inputStyle}
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div style={fieldWrapStyle}>
+                <label style={fieldLabelStyle}>Business Email</label>
+                <input
+                  style={inputStyle}
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your business email"
+                  required
+                />
+              </div>
+
+              <div style={fieldWrapStyle}>
+                <label style={fieldLabelStyle}>Company Name</label>
+                <input
+                  style={inputStyle}
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  placeholder="Enter your company name"
+                />
+              </div>
+
+              <div style={fieldWrapStyle}>
+                <label style={fieldLabelStyle}>Phone Number</label>
+                <input
+                  style={inputStyle}
+                  type="text"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Optional phone number"
+                />
+              </div>
+
+              <div style={{ ...fieldWrapStyle, gridColumn: "1 / -1" }}>
+                <label style={fieldLabelStyle}>How can we help?</label>
+                <textarea
+                  style={textareaStyle}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell us about your business, your current process, and what you would like to improve."
+                  required
+                />
+              </div>
+
+              {statusMessage ? (
+                <div
+                  style={{
+                    gridColumn: "1 / -1",
+                    borderRadius: 14,
+                    padding: "14px 16px",
+                    fontWeight: 700,
+                    border:
+                      statusType === "success"
+                        ? `1px solid ${palette.green}66`
+                        : `1px solid ${palette.orange}66`,
+                    background:
+                      statusType === "success"
+                        ? "rgba(107,191,114,0.14)"
+                        : "rgba(240,140,74,0.14)",
+                    color: palette.text,
+                  }}
+                >
+                  {statusMessage}
+                </div>
+              ) : null}
+
+              <div style={{ gridColumn: "1 / -1" }}>
+                <button
+                  type="submit"
+                  style={{
+                    ...contactButtonStyle,
+                    opacity: isSubmitting ? 0.75 : 1,
+                    cursor: isSubmitting ? "not-allowed" : "pointer",
+                  }}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Request Consultation"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </section>
@@ -403,15 +753,24 @@ function LoginPage() {
         <div style={eyebrowStyle}>Customer Access</div>
         <h1 style={pageTitleStyle}>Log in to TerraLedger</h1>
         <p style={pageTextStyle}>
-          Use this page to route customers into the TerraLedger app. Later, this button should link directly to your real product login URL.
+          Use this page to route customers into the TerraLedger app. Later,
+          this button should link directly to your real product login URL.
         </p>
       </section>
 
       <section style={sectionStyle}>
-        <div style={{ ...cardStyle, maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
+        <div
+          style={{
+            ...cardStyle,
+            maxWidth: 700,
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
           <h2 style={cardHeadingStyle}>Customer Login Portal</h2>
           <p style={{ ...cardTextStyle, marginBottom: 24 }}>
-            Customers with an active subscription should be able to log into TerraLedger from here.
+            Customers with an active subscription should be able to log into
+            TerraLedger from here.
           </p>
           <button style={primaryButtonStyle}>Go To TerraLedger Login</button>
         </div>
@@ -537,7 +896,8 @@ const heroCardStyle = {
   border: `1px solid ${palette.border}`,
   borderRadius: 28,
   padding: 18,
-  background: "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))",
+  background:
+    "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))",
   display: "grid",
   gap: 14,
   boxShadow: "0 20px 44px rgba(0,0,0,0.28)",
@@ -601,7 +961,8 @@ const cardStyle = {
   border: `1px solid ${palette.border}`,
   borderRadius: 24,
   padding: 24,
-  background: "linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03))",
+  background:
+    "linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03))",
   boxShadow: "0 14px 30px rgba(0,0,0,0.22)",
 };
 
@@ -609,7 +970,8 @@ const pricingCardStyle = {
   border: `1px solid ${palette.border}`,
   borderRadius: 28,
   padding: 30,
-  background: "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))",
+  background:
+    "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))",
   boxShadow: "0 20px 40px rgba(0,0,0,0.22)",
   minHeight: 100,
   display: "flex",
@@ -626,7 +988,8 @@ const pricingIntroCardStyle = {
   border: `1px solid ${palette.border}`,
   borderRadius: 24,
   padding: "22px 24px",
-  background: "linear-gradient(180deg, rgba(90,162,214,0.08), rgba(240,140,74,0.05))",
+  background:
+    "linear-gradient(180deg, rgba(90,162,214,0.08), rgba(240,140,74,0.05))",
   boxShadow: "0 16px 34px rgba(0,0,0,0.18)",
 };
 
@@ -781,19 +1144,29 @@ const listItemStyle = {
 
 const inputStyle = {
   width: "100%",
-  background: palette.panel,
+  height: 52,
+  background: "#182833",
+  border: `1px solid ${palette.border}`,
+  borderRadius: 14,
+  padding: "0 16px",
+  color: palette.text,
+  fontSize: 16,
+  boxSizing: "border-box",
+  outline: "none",
+};
+
+const textareaStyle = {
+  width: "100%",
+  minHeight: 160,
+  background: "#182833",
   border: `1px solid ${palette.border}`,
   borderRadius: 14,
   padding: "14px 16px",
   color: palette.text,
   fontSize: 16,
   boxSizing: "border-box",
-};
-
-const textareaStyle = {
-  ...inputStyle,
-  minHeight: 160,
   resize: "vertical",
+  outline: "none",
 };
 
 const primaryButtonStyle = {
@@ -807,6 +1180,106 @@ const primaryButtonStyle = {
   fontWeight: 800,
   cursor: "pointer",
   boxShadow: "0 12px 28px rgba(107,191,114,0.22)",
+};
+
+const contactWrapStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+  gap: 24,
+  alignItems: "stretch",
+};
+
+const contactInfoCardStyle = {
+  border: `1px solid ${palette.border}`,
+  borderRadius: 24,
+  padding: 28,
+  background:
+    "linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03))",
+  boxShadow: "0 14px 30px rgba(0,0,0,0.22)",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+};
+
+const contactFormCardStyle = {
+  border: `1px solid ${palette.border}`,
+  borderRadius: 24,
+  padding: 28,
+  background: `linear-gradient(180deg, ${palette.panel}, ${palette.panelSoft})`,
+  boxShadow: "0 14px 30px rgba(0,0,0,0.22)",
+};
+
+const contactMiniLabelStyle = {
+  color: palette.orangeSoft,
+  textTransform: "uppercase",
+  letterSpacing: 1.5,
+  fontSize: 12,
+  fontWeight: 700,
+};
+
+const contactTitleStyle = {
+  margin: "12px 0 12px",
+  fontSize: 34,
+  lineHeight: 1.15,
+};
+
+const contactBodyStyle = {
+  color: palette.text,
+  opacity: 0.92,
+  lineHeight: 1.85,
+  marginBottom: 22,
+};
+
+const contactPointsWrapStyle = {
+  display: "grid",
+  gap: 12,
+  marginTop: 4,
+};
+
+const contactPointStyle = {
+  display: "grid",
+  gridTemplateColumns: "16px 1fr",
+  gap: 10,
+  alignItems: "start",
+  color: palette.sand,
+  lineHeight: 1.7,
+};
+
+const contactPointBulletStyle = {
+  color: palette.orangeSoft,
+  fontWeight: 900,
+};
+
+const contactFormGridStyle = {
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gap: 18,
+};
+
+const fieldWrapStyle = {
+  display: "grid",
+  gap: 8,
+};
+
+const fieldLabelStyle = {
+  fontSize: 13,
+  fontWeight: 700,
+  color: palette.sand,
+  letterSpacing: 0.4,
+};
+
+const contactButtonStyle = {
+  width: "100%",
+  marginTop: 4,
+  background: `linear-gradient(135deg, ${palette.orange}, ${palette.orangeSoft})`,
+  color: palette.backgroundDeep,
+  border: "none",
+  borderRadius: 14,
+  padding: "16px 18px",
+  fontSize: 16,
+  fontWeight: 800,
+  cursor: "pointer",
+  boxShadow: "0 12px 28px rgba(240,140,74,0.24)",
 };
 
 const footerTitle = {
