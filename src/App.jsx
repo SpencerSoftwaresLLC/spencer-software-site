@@ -19,7 +19,7 @@ const palette = {
 const TERRALEDGER_URL = "https://terraledger.net";
 const TERRALEDGER_LOGIN_URL = "https://terraledger.net/login";
 const TERRALEDGER_REGISTER_URL = "https://terraledger.net/register";
-const TERRALEDGER_DOWNLOAD_URL = "https://terraledger.net/download";
+const TERRALEDGER_DOWNLOAD_URL = "https://github.com/SpencerSoftwaresLLC/terra-ledger/releases/download/v1.0.2/TerraLedger-Setup.exe";
 
 function useIsMobile(breakpoint = 768) {
   const getIsMobile = () => window.innerWidth <= breakpoint;
@@ -186,18 +186,6 @@ function Layout({ children }) {
                   >
                     TerraLedger
                   </Link>
-                  <a
-                    href={TERRALEDGER_DOWNLOAD_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      ...dropdownItemStyle,
-                      background: `${palette.green}18`,
-                      marginBottom: 8,
-                    }}
-                  >
-                    Download TerraLedger
-                  </a>
                   <div style={dropdownSectionLabelStyle}>More software coming soon</div>
                   <div style={dropdownMutedItemStyle}>Operations tools</div>
                   <div style={dropdownMutedItemStyle}>Business workflow software</div>
@@ -656,6 +644,89 @@ function TerraLedgerPage() {
       <section
         style={{
           ...sectionStyle,
+          padding: isMobile ? "20px 16px 12px" : "24px 24px 12px",
+        }}
+      >
+        <div
+          style={{
+            ...cardStyle,
+            padding: isMobile ? 22 : 30,
+            borderTop: `4px solid ${palette.green}`,
+          }}
+        >
+          <div style={eyebrowStyle}>Desktop Download</div>
+          <h2
+            style={{
+              ...sectionTitleStyle,
+              marginTop: 14,
+              fontSize: isMobile ? 28 : 34,
+            }}
+          >
+            Download TerraLedger for Windows
+          </h2>
+          <p style={{ ...sectionTextStyle, maxWidth: 860 }}>
+            Install TerraLedger on your Windows computer to manage quotes,
+            invoices, jobs, payroll, bookkeeping, and daily office operations
+            from one desktop app.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              gap: 14,
+              flexWrap: "wrap",
+              marginTop: 20,
+              flexDirection: isMobile ? "column" : "row",
+            }}
+          >
+            <a
+              href={TERRALEDGER_DOWNLOAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...primaryButtonStyle,
+                marginTop: 0,
+                textDecoration: "none",
+                textAlign: "center",
+                width: isMobile ? "100%" : "auto",
+                boxSizing: "border-box",
+              }}
+            >
+              Download TerraLedger
+            </a>
+
+            <a
+              href={TERRALEDGER_LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...navButtonSecondary,
+                textAlign: "center",
+                width: isMobile ? "100%" : "auto",
+                boxSizing: "border-box",
+              }}
+            >
+              Customer Login
+            </a>
+          </div>
+
+          <div
+            style={{
+              marginTop: 18,
+              color: palette.sand,
+              lineHeight: 1.8,
+              fontSize: 14,
+            }}
+          >
+            Windows desktop app. Download begins from the official Spencer
+            Softwares release source.
+          </div>
+        </div>
+      </section>
+
+      <section
+        style={{
+          ...sectionStyle,
           padding: isMobile ? "32px 16px" : "40px 24px",
         }}
       >
@@ -884,6 +955,7 @@ function TerraLedgerPage() {
                     textAlign: "center",
                     width: isMobile ? "100%" : "auto",
                     boxSizing: "border-box",
+                    textDecoration: "none",
                   }}
                 >
                   {plan.button}
