@@ -19,10 +19,7 @@ const palette = {
 const TERRALEDGER_URL = "https://terraledger.net";
 const TERRALEDGER_LOGIN_URL = "https://terraledger.net/login";
 const TERRALEDGER_REGISTER_URL = "https://terraledger.net/register";
-const TERRALEDGER_BILLING_URL = "https://terraledger.net/settings/billing";
-
-const STRIPE_MONTHLY_URL = "https://buy.stripe.com/fZu7sNepb9927Z82mWdjO03";
-const STRIPE_YEARLY_URL = "https://buy.stripe.com/dRmdRb80N84Y3IS5z8djO02";
+const TERRALEDGER_DOWNLOAD_URL = "https://terraledger.net/download";
 
 function useIsMobile(breakpoint = 768) {
   const getIsMobile = () => window.innerWidth <= breakpoint;
@@ -38,24 +35,6 @@ function useIsMobile(breakpoint = 768) {
   }, [breakpoint]);
 
   return isMobile;
-}
-
-function ExternalButton({ href, children, secondary = false, fullWidth = false }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        ...(secondary ? navButtonSecondary : navButtonPrimary),
-        width: fullWidth ? "100%" : "auto",
-        textAlign: "center",
-        boxSizing: "border-box",
-      }}
-    >
-      {children}
-    </a>
-  );
 }
 
 function Layout({ children }) {
@@ -208,7 +187,7 @@ function Layout({ children }) {
                     TerraLedger
                   </Link>
                   <a
-                    href={TERRALEDGER_URL}
+                    href={TERRALEDGER_DOWNLOAD_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -217,7 +196,7 @@ function Layout({ children }) {
                       marginBottom: 8,
                     }}
                   >
-                    Launch TerraLedger
+                    Download TerraLedger
                   </a>
                   <div style={dropdownSectionLabelStyle}>More software coming soon</div>
                   <div style={dropdownMutedItemStyle}>Operations tools</div>
@@ -275,11 +254,11 @@ function Layout({ children }) {
             <div>
               <a
                 style={footerLink}
-                href={TERRALEDGER_URL}
+                href={TERRALEDGER_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Launch App
+                Download TerraLedger
               </a>
             </div>
           </div>
@@ -301,12 +280,12 @@ function Layout({ children }) {
           <div>
             <div style={footerTitle}>Legal & Business</div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              SpencerSoftwaresLLC.com is the home for company branding,
-              product sales, and software growth.
+              SpencerSoftwaresLLC.com is the home for the company brand, product
+              access, and software growth.
             </div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              TerraLedger is the live software platform accessed separately at
-              terraledger.net.
+              Built to support software products with clean branding, pricing,
+              and customer access.
             </div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
               © Spencer Softwares LLC
@@ -375,7 +354,7 @@ function HomePage() {
               Buy TerraLedger
             </Link>
             <a
-              href={TERRALEDGER_URL}
+              href={TERRALEDGER_DOWNLOAD_URL}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -385,7 +364,7 @@ function HomePage() {
                 boxSizing: "border-box",
               }}
             >
-              Launch TerraLedger
+              Download TerraLedger
             </a>
           </div>
         </div>
@@ -427,7 +406,7 @@ function HomePage() {
                 Website Flow
               </div>
               <div style={{ fontWeight: 700, marginTop: 8 }}>
-                Website-first sales, app-first usage
+                Website-first access
               </div>
               <div
                 style={{
@@ -438,7 +417,7 @@ function HomePage() {
                 }}
               >
                 Customers subscribe through SpencerSoftwaresLLC.com, then
-                access TerraLedger through terraledger.net.
+                TerraLedger access unlocks.
               </div>
             </div>
             <div style={panelStyle}>
@@ -446,7 +425,7 @@ function HomePage() {
                 Access Model
               </div>
               <div style={{ fontWeight: 700, marginTop: 8 }}>
-                Live cloud software
+                Desktop app path
               </div>
               <div
                 style={{
@@ -456,8 +435,8 @@ function HomePage() {
                   lineHeight: 1.6,
                 }}
               >
-                TerraLedger is now live online, giving customers browser-based
-                access instead of managing desktop downloads.
+                TerraLedger is being positioned for desktop delivery, giving
+                customers a clearer install and usage experience.
               </div>
             </div>
           </div>
@@ -508,8 +487,8 @@ function HomePage() {
             text="A company website up front, a product page for TerraLedger, and billing handled before app access begins."
           />
           <FeatureCard
-            title="Live Product Access"
-            text="Customers can now move from the Spencer Softwares site directly into the live TerraLedger application online."
+            title="Ready To Scale"
+            text="As Spencer Softwares grows, more products can live under the same company site and brand system."
           />
         </div>
       </section>
@@ -526,7 +505,7 @@ function HomePage() {
             padding: isMobile ? 22 : 28,
           }}
         >
-          <div style={eyebrowStyle}>Live Access</div>
+          <div style={eyebrowStyle}>Desktop Access</div>
           <h2
             style={{
               ...sectionTitleStyle,
@@ -534,12 +513,12 @@ function HomePage() {
               fontSize: isMobile ? 28 : 34,
             }}
           >
-            TerraLedger is now live.
+            TerraLedger desktop access is the next step.
           </h2>
           <p style={{ ...sectionTextStyle, maxWidth: 880 }}>
-            Use the parent site to view product information and pricing, then
-            move directly into TerraLedger for login, registration, and product
-            access.
+            The Spencer Softwares site will handle product information and
+            billing while TerraLedger moves toward a downloadable desktop app
+            experience.
           </p>
 
           <div
@@ -551,27 +530,36 @@ function HomePage() {
             }}
           >
             <div style={panelStyle}>
-              <div style={miniCardLabelStyle}>Launch App</div>
-              <div style={miniCardTitleStyle}>Open TerraLedger</div>
+              <div style={miniCardLabelStyle}>Purchase</div>
+              <div style={miniCardTitleStyle}>Choose your plan</div>
               <p style={miniCardTextStyle}>
-                Go straight to the live software platform.
+                Start with the correct TerraLedger plan on the parent website.
+              </p>
+            </div>
+
+            <div style={panelStyle}>
+              <div style={miniCardLabelStyle}>Install</div>
+              <div style={miniCardTitleStyle}>Download TerraLedger</div>
+              <p style={miniCardTextStyle}>
+                Use the desktop download path as TerraLedger moves into a full
+                installable product.
               </p>
               <a
-                href={TERRALEDGER_URL}
+                href={TERRALEDGER_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ ...navButtonPrimary, marginTop: 8 }}
               >
-                Launch App
+                Download
               </a>
             </div>
 
             <div style={panelStyle}>
-              <div style={miniCardLabelStyle}>Customer Login</div>
-              <div style={miniCardTitleStyle}>Existing subscribers</div>
+              <div style={miniCardLabelStyle}>Access</div>
+              <div style={miniCardTitleStyle}>Customer Login</div>
               <p style={miniCardTextStyle}>
-                Active customers can log in directly to their TerraLedger
-                account.
+                Existing users can still sign in through TerraLedger customer
+                access.
               </p>
               <a
                 href={TERRALEDGER_LOGIN_URL}
@@ -579,23 +567,7 @@ function HomePage() {
                 rel="noopener noreferrer"
                 style={{ ...navButtonSecondary, marginTop: 8 }}
               >
-                Go To Login
-              </a>
-            </div>
-
-            <div style={panelStyle}>
-              <div style={miniCardLabelStyle}>New Access</div>
-              <div style={miniCardTitleStyle}>Create your account</div>
-              <p style={miniCardTextStyle}>
-                Purchase first, then register and begin using the platform.
-              </p>
-              <a
-                href={TERRALEDGER_REGISTER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ ...navButtonSecondary, marginTop: 8 }}
-              >
-                Register
+                Customer Login
               </a>
             </div>
           </div>
@@ -616,7 +588,7 @@ function TerraLedgerPage() {
     "Ledger and bookkeeping controls",
     "Employee and payroll support",
     "Subscription-based access control",
-    "Live cloud-based browser access",
+    "Windows desktop distribution path later",
   ];
 
   const plans = [
@@ -629,28 +601,26 @@ function TerraLedgerPage() {
         "Full TerraLedger access",
         "Subscription-gated account access",
         "Billing handled on SpencerSoftwaresLLC.com",
-        "Login at terraledger.net",
       ],
       button: "Start Monthly",
       accent: palette.orange,
       badge: "Monthly Billing",
-      href: STRIPE_MONTHLY_URL,
+      href: "https://buy.stripe.com/fZu7sNepb9927Z82mWdjO03",
     },
     {
       name: "Yearly",
       price: "$1,168",
       sub: "/year",
-      note: "30% off monthly pricing for the best value for full-time use and stronger long-term savings.",
+      note: "30% off Monthly for the best value for full-time use with stronger long-term savings.",
       details: [
         "Full TerraLedger access",
         "Annual billing value",
         "Billing handled on SpencerSoftwaresLLC.com",
-        "Login at terraledger.net",
       ],
       button: "Start Yearly",
       accent: palette.green,
       badge: "Best Value",
-      href: STRIPE_YEARLY_URL,
+      href: "https://buy.stripe.com/dRmdRb80N84Y3IS5z8djO02",
     },
   ];
 
@@ -681,24 +651,6 @@ function TerraLedgerPage() {
           designed for companies that need operational control without juggling
           disconnected systems.
         </p>
-        <div
-          style={{
-            display: "flex",
-            gap: 14,
-            flexWrap: "wrap",
-            justifyContent: "center",
-            marginTop: 24,
-            width: "100%",
-            flexDirection: isMobile ? "column" : "row",
-          }}
-        >
-          <ExternalButton href={TERRALEDGER_URL} fullWidth={isMobile}>
-            Launch TerraLedger
-          </ExternalButton>
-          <ExternalButton href={TERRALEDGER_LOGIN_URL} secondary fullWidth={isMobile}>
-            Customer Login
-          </ExternalButton>
-        </div>
       </section>
 
       <section
@@ -754,11 +706,11 @@ function TerraLedgerPage() {
                   textAlign: "center",
                   boxSizing: "border-box",
                 }}
-                href={TERRALEDGER_REGISTER_URL}
+                href={TERRALEDGER_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Register After Purchase
+                Download TerraLedger
               </a>
             </div>
           </div>
@@ -777,7 +729,7 @@ function TerraLedgerPage() {
             padding: isMobile ? 22 : 28,
           }}
         >
-          <div style={eyebrowStyle}>Live Access</div>
+          <div style={eyebrowStyle}>Desktop Path</div>
           <h2
             style={{
               ...sectionTitleStyle,
@@ -785,12 +737,12 @@ function TerraLedgerPage() {
               fontSize: isMobile ? 28 : 34,
             }}
           >
-            Access TerraLedger after purchase.
+            TerraLedger is moving toward desktop delivery.
           </h2>
           <p style={{ ...sectionTextStyle, maxWidth: 860 }}>
-            The purchase flow begins on SpencerSoftwaresLLC.com. Once your plan
-            is active, TerraLedger is accessed directly at terraledger.net for
-            account registration, login, and daily usage.
+            The purchase flow begins on SpencerSoftwaresLLC.com. From there,
+            TerraLedger can be positioned as a downloadable software product for
+            customer access and installation.
           </p>
 
           <div
@@ -810,16 +762,17 @@ function TerraLedgerPage() {
             </div>
             <div style={panelStyle}>
               <div style={miniCardLabelStyle}>Step 2</div>
-              <div style={miniCardTitleStyle}>Create your account</div>
+              <div style={miniCardTitleStyle}>Download TerraLedger</div>
               <p style={miniCardTextStyle}>
-                Register your TerraLedger account after purchase.
+                Install the platform through the TerraLedger download path.
               </p>
             </div>
             <div style={panelStyle}>
               <div style={miniCardLabelStyle}>Step 3</div>
-              <div style={miniCardTitleStyle}>Log in and use the app</div>
+              <div style={miniCardTitleStyle}>Sign in and use the app</div>
               <p style={miniCardTextStyle}>
-                Access the live platform online from any modern browser.
+                Existing customers can continue to use their login access after
+                install.
               </p>
             </div>
           </div>
@@ -937,7 +890,7 @@ function TerraLedgerPage() {
                 </a>
 
                 <a
-                  href={TERRALEDGER_LOGIN_URL}
+                  href={TERRALEDGER_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -949,7 +902,7 @@ function TerraLedgerPage() {
                     marginTop: 12,
                   }}
                 >
-                  Already subscribed? Log in
+                  Download TerraLedger
                 </a>
               </div>
             </div>
@@ -1012,15 +965,7 @@ function PricingPage() {
               View TerraLedger features, pricing options, and its dedicated
               purchase flow all in one place.
             </p>
-            <div
-              style={{
-                marginTop: 18,
-                display: "flex",
-                gap: 12,
-                flexWrap: "wrap",
-                flexDirection: isMobile ? "column" : "row",
-              }}
-            >
+            <div style={{ marginTop: 18 }}>
               <Link
                 style={{
                   ...navButtonPrimary,
@@ -1032,19 +977,6 @@ function PricingPage() {
               >
                 View TerraLedger Pricing
               </Link>
-              <a
-                href={TERRALEDGER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  ...navButtonSecondary,
-                  width: isMobile ? "100%" : "auto",
-                  textAlign: "center",
-                  boxSizing: "border-box",
-                }}
-              >
-                Launch TerraLedger
-              </a>
             </div>
           </div>
         </div>
@@ -1113,8 +1045,8 @@ function AboutPage() {
             </h2>
             <p style={cardTextStyle}>
               SpencerSoftwaresLLC.com handles branding, trust, pricing, and
-              checkout. TerraLedger handles product usage and app access through
-              the live platform at terraledger.net.
+              checkout. The app handles product usage and requires an active
+              subscription to unlock access.
             </p>
           </div>
         </div>
@@ -1400,8 +1332,7 @@ function LoginPage() {
             fontSize: isMobile ? 16 : 18,
           }}
         >
-          Use this page to route customers directly into the live TerraLedger
-          platform.
+          Use this page to route customers into TerraLedger customer access.
         </p>
       </section>
 
@@ -1424,8 +1355,8 @@ function LoginPage() {
             Customer Login Portal
           </h2>
           <p style={{ ...cardTextStyle, marginBottom: 24 }}>
-            Customers with an active subscription can log in directly through
-            TerraLedger.
+            Customers with an active subscription should be able to log into
+            TerraLedger from here.
           </p>
 
           <div
@@ -1455,7 +1386,7 @@ function LoginPage() {
             </a>
 
             <a
-              href={TERRALEDGER_REGISTER_URL}
+              href={TERRALEDGER_DOWNLOAD_URL}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -1465,21 +1396,7 @@ function LoginPage() {
                 boxSizing: "border-box",
               }}
             >
-              Register
-            </a>
-
-            <a
-              href={TERRALEDGER_BILLING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                ...navButtonSecondary,
-                width: isMobile ? "100%" : "auto",
-                textAlign: "center",
-                boxSizing: "border-box",
-              }}
-            >
-              Billing
+              Download TerraLedger
             </a>
           </div>
         </div>
@@ -2082,14 +1999,14 @@ const miniCardLabelStyle = {
 
 const miniCardTitleStyle = {
   marginTop: 8,
-  fontSize: 22,
+  fontSize: 28,
   fontWeight: 800,
 };
 
 const miniCardTextStyle = {
   color: palette.text,
   opacity: 0.92,
-  lineHeight: 1.75,
+  lineHeight: 1.8,
   margin: "10px 0 0",
 };
 
