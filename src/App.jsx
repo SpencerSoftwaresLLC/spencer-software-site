@@ -681,7 +681,7 @@ function TerraLedgerPage() {
               <div style={pricingBottomWrapStyle}>
                 {plan.name === "Monthly" ? (
                   <a
-                    href="https://buy.stripe.com/bJe4gBepbbha5R05z8djO00"
+                    href="https://buy.stripe.com/fZu7sNepb9927Z82mWdjO03"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -696,7 +696,7 @@ function TerraLedgerPage() {
                   </a>
                 ) : (
                   <a
-                    href="https://buy.stripe.com/dRmdRbftf5WQ3IS2mWdjO01"
+                    href="https://buy.stripe.com/dRmdRb80N84Y3IS5z8djO02"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
