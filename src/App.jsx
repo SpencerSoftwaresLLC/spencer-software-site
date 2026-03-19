@@ -69,7 +69,7 @@ function Layout({ children }) {
               Customer Login
             </Link>
 
-            <div style={{ position: "relative", alignSelf: "flex-end" }}>
+            <div style={{ position: "relative" }}>
               <button
                 type="button"
                 onClick={() => setProductsOpen((v) => !v)}
@@ -182,7 +182,6 @@ function HomePage() {
             billing workflows, and a better way to manage real business
             activity.
           </p>
-
           <div
             style={{
               display: "flex",
@@ -202,7 +201,9 @@ function HomePage() {
 
         <div style={heroCardStyle}>
           <div style={panelStyle}>
-            <div style={{ color: palette.sand, fontSize: 14 }}>Featured Product</div>
+            <div style={{ color: palette.sand, fontSize: 14 }}>
+              Featured Product
+            </div>
             <div style={{ fontSize: 32, fontWeight: 800, marginTop: 10 }}>
               TerraLedger
             </div>
@@ -217,11 +218,14 @@ function HomePage() {
               daily office control in one platform.
             </p>
           </div>
-
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
             <div style={panelStyle}>
-              <div style={{ color: palette.sand, fontSize: 14 }}>Website Flow</div>
-              <div style={{ fontWeight: 700, marginTop: 8 }}>Website-first access</div>
+              <div style={{ color: palette.sand, fontSize: 14 }}>
+                Website Flow
+              </div>
+              <div style={{ fontWeight: 700, marginTop: 8 }}>
+                Website-first access
+              </div>
               <div
                 style={{
                   color: palette.text,
@@ -234,10 +238,13 @@ function HomePage() {
                 TerraLedger access unlocks.
               </div>
             </div>
-
             <div style={panelStyle}>
-              <div style={{ color: palette.sand, fontSize: 14 }}>Access Model</div>
-              <div style={{ fontWeight: 700, marginTop: 8 }}>Subscription-gated</div>
+              <div style={{ color: palette.sand, fontSize: 14 }}>
+                Access Model
+              </div>
+              <div style={{ fontWeight: 700, marginTop: 8 }}>
+                Subscription-gated
+              </div>
               <div
                 style={{
                   color: palette.text,
@@ -254,12 +261,13 @@ function HomePage() {
       </section>
 
       <section style={sectionStyle}>
-        <div style={sectionHeadingWrap}>
+        <div style={sectionHeadingWrapCentered}>
           <div style={eyebrowStyle}>Why Spencer Softwares</div>
           <h2 style={sectionTitleStyle}>Built for real operators, not just demos.</h2>
           <p style={sectionTextStyle}>
-            Spencer Softwares is being shaped to feel professional, trustworthy,
-            and ready to grow into multiple software products over time.
+            Spencer Softwares is being shaped to feel professional,
+            trustworthy, and ready to grow into multiple software products over
+            time.
           </p>
         </div>
 
@@ -369,7 +377,9 @@ function TerraLedgerPage() {
       <section id="pricing" style={{ ...sectionStyle, paddingTop: 8 }}>
         <div style={sectionHeadingWrapCentered}>
           <div style={eyebrowStyle}>TerraLedger Pricing</div>
-          <h2 style={sectionTitleStyle}>Choose the TerraLedger plan that fits your business.</h2>
+          <h2 style={sectionTitleStyle}>
+            Choose the TerraLedger plan that fits your business.
+          </h2>
           <p style={sectionTextStyleCentered}>
             TerraLedger pricing lives here so customers go straight from product
             details to the correct checkout flow.
@@ -393,7 +403,6 @@ function TerraLedgerPage() {
                     <span style={pricingSubStyle}>{plan.sub}</span>
                   </div>
                 </div>
-
                 <div
                   style={{
                     ...pricingBadgeStyle,
@@ -509,7 +518,6 @@ function AboutPage() {
               direction for the rest of the brand.
             </p>
           </div>
-
           <div style={cardStyle}>
             <h2 style={cardHeadingStyle}>The Structure</h2>
             <p style={cardTextStyle}>
@@ -790,7 +798,7 @@ const brandWrapStyle = {
 
 const mainNavStyle = {
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   alignItems: "center",
   gap: 22,
   flexWrap: "wrap",
@@ -801,7 +809,6 @@ const topRightNavWrapStyle = {
   flexDirection: "column",
   alignItems: "flex-end",
   gap: 10,
-  minWidth: 180,
 };
 
 const topRightLoginStyle = {
