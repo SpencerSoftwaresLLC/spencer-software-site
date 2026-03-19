@@ -16,6 +16,14 @@ const palette = {
   greenSoft: "#8fd59a",
 };
 
+const TERRALEDGER_URL = "https://terraledger.net";
+const TERRALEDGER_LOGIN_URL = "https://terraledger.net/login";
+const TERRALEDGER_REGISTER_URL = "https://terraledger.net/register";
+const TERRALEDGER_BILLING_URL = "https://terraledger.net/settings/billing";
+
+const STRIPE_MONTHLY_URL = "https://buy.stripe.com/fZu7sNepb9927Z82mWdjO03";
+const STRIPE_YEARLY_URL = "https://buy.stripe.com/dRmdRb80N84Y3IS5z8djO02";
+
 function useIsMobile(breakpoint = 768) {
   const getIsMobile = () => window.innerWidth <= breakpoint;
   const [isMobile, setIsMobile] = useState(getIsMobile());
@@ -30,6 +38,24 @@ function useIsMobile(breakpoint = 768) {
   }, [breakpoint]);
 
   return isMobile;
+}
+
+function ExternalButton({ href, children, secondary = false, fullWidth = false }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        ...(secondary ? navButtonSecondary : navButtonPrimary),
+        width: fullWidth ? "100%" : "auto",
+        textAlign: "center",
+        boxSizing: "border-box",
+      }}
+    >
+      {children}
+    </a>
+  );
 }
 
 function Layout({ children }) {
@@ -135,17 +161,19 @@ function Layout({ children }) {
               gap: 10,
             }}
           >
-            <Link
+            <a
+              href={TERRALEDGER_LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 ...topRightLoginStyle,
                 width: isMobile ? "100%" : "auto",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
-              to="/login"
             >
               Customer Login
-            </Link>
+            </a>
 
             <div style={{ position: "relative", width: isMobile ? "100%" : "auto" }}>
               <button
@@ -179,6 +207,18 @@ function Layout({ children }) {
                   >
                     TerraLedger
                   </Link>
+                  <a
+                    href={TERRALEDGER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      ...dropdownItemStyle,
+                      background: `${palette.green}18`,
+                      marginBottom: 8,
+                    }}
+                  >
+                    Launch TerraLedger
+                  </a>
                   <div style={dropdownSectionLabelStyle}>More software coming soon</div>
                   <div style={dropdownMutedItemStyle}>Operations tools</div>
                   <div style={dropdownMutedItemStyle}>Business workflow software</div>
@@ -223,9 +263,24 @@ function Layout({ children }) {
               </Link>
             </div>
             <div>
-              <Link style={footerLink} to="/login">
+              <a
+                style={footerLink}
+                href={TERRALEDGER_LOGIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Customer Login
-              </Link>
+              </a>
+            </div>
+            <div>
+              <a
+                style={footerLink}
+                href={TERRALEDGER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Launch App
+              </a>
             </div>
           </div>
 
@@ -246,12 +301,12 @@ function Layout({ children }) {
           <div>
             <div style={footerTitle}>Legal & Business</div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              SpencerSoftwaresLLC.com is the home for the company brand, product
-              access, and software growth.
+              SpencerSoftwaresLLC.com is the home for company branding,
+              product sales, and software growth.
             </div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              Built to support software products with clean branding, pricing,
-              and customer access.
+              TerraLedger is the live software platform accessed separately at
+              terraledger.net.
             </div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
               © Spencer Softwares LLC
@@ -319,17 +374,19 @@ function HomePage() {
             >
               Buy TerraLedger
             </Link>
-            <Link
+            <a
+              href={TERRALEDGER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 ...navButtonSecondary,
                 width: isMobile ? "100%" : "auto",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
-              to="/terraledger"
             >
-              Explore Product
-            </Link>
+              Launch TerraLedger
+            </a>
           </div>
         </div>
 
@@ -370,7 +427,7 @@ function HomePage() {
                 Website Flow
               </div>
               <div style={{ fontWeight: 700, marginTop: 8 }}>
-                Website-first access
+                Website-first sales, app-first usage
               </div>
               <div
                 style={{
@@ -381,7 +438,7 @@ function HomePage() {
                 }}
               >
                 Customers subscribe through SpencerSoftwaresLLC.com, then
-                TerraLedger access unlocks.
+                access TerraLedger through terraledger.net.
               </div>
             </div>
             <div style={panelStyle}>
@@ -389,7 +446,7 @@ function HomePage() {
                 Access Model
               </div>
               <div style={{ fontWeight: 700, marginTop: 8 }}>
-                Subscription-gated
+                Live cloud software
               </div>
               <div
                 style={{
@@ -399,7 +456,8 @@ function HomePage() {
                   lineHeight: 1.6,
                 }}
               >
-                No active plan means no active product access.
+                TerraLedger is now live online, giving customers browser-based
+                access instead of managing desktop downloads.
               </div>
             </div>
           </div>
@@ -450,9 +508,97 @@ function HomePage() {
             text="A company website up front, a product page for TerraLedger, and billing handled before app access begins."
           />
           <FeatureCard
-            title="Ready To Scale"
-            text="As Spencer Softwares grows, more products can live under the same company site and brand system."
+            title="Live Product Access"
+            text="Customers can now move from the Spencer Softwares site directly into the live TerraLedger application online."
           />
+        </div>
+      </section>
+
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "16px 16px 40px" : "10px 24px 48px",
+        }}
+      >
+        <div
+          style={{
+            ...cardStyle,
+            padding: isMobile ? 22 : 28,
+          }}
+        >
+          <div style={eyebrowStyle}>Live Access</div>
+          <h2
+            style={{
+              ...sectionTitleStyle,
+              marginTop: 14,
+              fontSize: isMobile ? 28 : 34,
+            }}
+          >
+            TerraLedger is now live.
+          </h2>
+          <p style={{ ...sectionTextStyle, maxWidth: 880 }}>
+            Use the parent site to view product information and pricing, then
+            move directly into TerraLedger for login, registration, and product
+            access.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
+              gap: 16,
+              marginTop: 22,
+            }}
+          >
+            <div style={panelStyle}>
+              <div style={miniCardLabelStyle}>Launch App</div>
+              <div style={miniCardTitleStyle}>Open TerraLedger</div>
+              <p style={miniCardTextStyle}>
+                Go straight to the live software platform.
+              </p>
+              <a
+                href={TERRALEDGER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ ...navButtonPrimary, marginTop: 8 }}
+              >
+                Launch App
+              </a>
+            </div>
+
+            <div style={panelStyle}>
+              <div style={miniCardLabelStyle}>Customer Login</div>
+              <div style={miniCardTitleStyle}>Existing subscribers</div>
+              <p style={miniCardTextStyle}>
+                Active customers can log in directly to their TerraLedger
+                account.
+              </p>
+              <a
+                href={TERRALEDGER_LOGIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ ...navButtonSecondary, marginTop: 8 }}
+              >
+                Go To Login
+              </a>
+            </div>
+
+            <div style={panelStyle}>
+              <div style={miniCardLabelStyle}>New Access</div>
+              <div style={miniCardTitleStyle}>Create your account</div>
+              <p style={miniCardTextStyle}>
+                Purchase first, then register and begin using the platform.
+              </p>
+              <a
+                href={TERRALEDGER_REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ ...navButtonSecondary, marginTop: 8 }}
+              >
+                Register
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>
@@ -470,7 +616,7 @@ function TerraLedgerPage() {
     "Ledger and bookkeeping controls",
     "Employee and payroll support",
     "Subscription-based access control",
-    "Windows desktop distribution path later",
+    "Live cloud-based browser access",
   ];
 
   const plans = [
@@ -483,24 +629,28 @@ function TerraLedgerPage() {
         "Full TerraLedger access",
         "Subscription-gated account access",
         "Billing handled on SpencerSoftwaresLLC.com",
+        "Login at terraledger.net",
       ],
       button: "Start Monthly",
       accent: palette.orange,
       badge: "Monthly Billing",
+      href: STRIPE_MONTHLY_URL,
     },
     {
       name: "Yearly",
       price: "$1,168",
       sub: "/year",
-      note: "30% off Monthly for the best value for full-time use with stronger long-term savings.",
+      note: "30% off monthly pricing for the best value for full-time use and stronger long-term savings.",
       details: [
         "Full TerraLedger access",
         "Annual billing value",
         "Billing handled on SpencerSoftwaresLLC.com",
+        "Login at terraledger.net",
       ],
       button: "Start Yearly",
       accent: palette.green,
       badge: "Best Value",
+      href: STRIPE_YEARLY_URL,
     },
   ];
 
@@ -531,6 +681,24 @@ function TerraLedgerPage() {
           designed for companies that need operational control without juggling
           disconnected systems.
         </p>
+        <div
+          style={{
+            display: "flex",
+            gap: 14,
+            flexWrap: "wrap",
+            justifyContent: "center",
+            marginTop: 24,
+            width: "100%",
+            flexDirection: isMobile ? "column" : "row",
+          }}
+        >
+          <ExternalButton href={TERRALEDGER_URL} fullWidth={isMobile}>
+            Launch TerraLedger
+          </ExternalButton>
+          <ExternalButton href={TERRALEDGER_LOGIN_URL} secondary fullWidth={isMobile}>
+            Customer Login
+          </ExternalButton>
+        </div>
       </section>
 
       <section
@@ -567,11 +735,11 @@ function TerraLedgerPage() {
               field service, and growing local businesses that need reliable
               office software for daily operations.
             </p>
-            <div style={{ marginTop: 24 }}>
+            <div style={{ marginTop: 24, display: "grid", gap: 12 }}>
               <a
                 style={{
                   ...navButtonPrimary,
-                  width: isMobile ? "100%" : "auto",
+                  width: "100%",
                   textAlign: "center",
                   boxSizing: "border-box",
                 }}
@@ -579,6 +747,80 @@ function TerraLedgerPage() {
               >
                 View TerraLedger Pricing
               </a>
+              <a
+                style={{
+                  ...navButtonSecondary,
+                  width: "100%",
+                  textAlign: "center",
+                  boxSizing: "border-box",
+                }}
+                href={TERRALEDGER_REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Register After Purchase
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "10px 16px 24px" : "8px 24px 28px",
+        }}
+      >
+        <div
+          style={{
+            ...cardStyle,
+            padding: isMobile ? 22 : 28,
+          }}
+        >
+          <div style={eyebrowStyle}>Live Access</div>
+          <h2
+            style={{
+              ...sectionTitleStyle,
+              marginTop: 14,
+              fontSize: isMobile ? 28 : 34,
+            }}
+          >
+            Access TerraLedger after purchase.
+          </h2>
+          <p style={{ ...sectionTextStyle, maxWidth: 860 }}>
+            The purchase flow begins on SpencerSoftwaresLLC.com. Once your plan
+            is active, TerraLedger is accessed directly at terraledger.net for
+            account registration, login, and daily usage.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
+              gap: 16,
+              marginTop: 20,
+            }}
+          >
+            <div style={panelStyle}>
+              <div style={miniCardLabelStyle}>Step 1</div>
+              <div style={miniCardTitleStyle}>Choose a plan</div>
+              <p style={miniCardTextStyle}>
+                Pick monthly or yearly billing on the parent site.
+              </p>
+            </div>
+            <div style={panelStyle}>
+              <div style={miniCardLabelStyle}>Step 2</div>
+              <div style={miniCardTitleStyle}>Create your account</div>
+              <p style={miniCardTextStyle}>
+                Register your TerraLedger account after purchase.
+              </p>
+            </div>
+            <div style={panelStyle}>
+              <div style={miniCardLabelStyle}>Step 3</div>
+              <div style={miniCardTitleStyle}>Log in and use the app</div>
+              <p style={miniCardTextStyle}>
+                Access the live platform online from any modern browser.
+              </p>
             </div>
           </div>
         </div>
@@ -679,37 +921,36 @@ function TerraLedgerPage() {
               </div>
 
               <div style={pricingBottomWrapStyle}>
-                {plan.name === "Monthly" ? (
-                  <a
-                    href="https://buy.stripe.com/fZu7sNepb9927Z82mWdjO03"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      ...primaryButtonStyle,
-                      display: "inline-block",
-                      textAlign: "center",
-                      width: isMobile ? "100%" : "auto",
-                      boxSizing: "border-box",
-                    }}
-                  >
-                    {plan.button}
-                  </a>
-                ) : (
-                  <a
-                    href="https://buy.stripe.com/dRmdRb80N84Y3IS5z8djO02"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      ...primaryButtonStyle,
-                      display: "inline-block",
-                      textAlign: "center",
-                      width: isMobile ? "100%" : "auto",
-                      boxSizing: "border-box",
-                    }}
-                  >
-                    {plan.button}
-                  </a>
-                )}
+                <a
+                  href={plan.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    ...primaryButtonStyle,
+                    display: "inline-block",
+                    textAlign: "center",
+                    width: isMobile ? "100%" : "auto",
+                    boxSizing: "border-box",
+                  }}
+                >
+                  {plan.button}
+                </a>
+
+                <a
+                  href={TERRALEDGER_LOGIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    ...navButtonSecondary,
+                    display: "inline-block",
+                    textAlign: "center",
+                    width: "100%",
+                    boxSizing: "border-box",
+                    marginTop: 12,
+                  }}
+                >
+                  Already subscribed? Log in
+                </a>
               </div>
             </div>
           ))}
@@ -771,7 +1012,15 @@ function PricingPage() {
               View TerraLedger features, pricing options, and its dedicated
               purchase flow all in one place.
             </p>
-            <div style={{ marginTop: 18 }}>
+            <div
+              style={{
+                marginTop: 18,
+                display: "flex",
+                gap: 12,
+                flexWrap: "wrap",
+                flexDirection: isMobile ? "column" : "row",
+              }}
+            >
               <Link
                 style={{
                   ...navButtonPrimary,
@@ -783,6 +1032,19 @@ function PricingPage() {
               >
                 View TerraLedger Pricing
               </Link>
+              <a
+                href={TERRALEDGER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  ...navButtonSecondary,
+                  width: isMobile ? "100%" : "auto",
+                  textAlign: "center",
+                  boxSizing: "border-box",
+                }}
+              >
+                Launch TerraLedger
+              </a>
             </div>
           </div>
         </div>
@@ -851,8 +1113,8 @@ function AboutPage() {
             </h2>
             <p style={cardTextStyle}>
               SpencerSoftwaresLLC.com handles branding, trust, pricing, and
-              checkout. The app handles product usage and requires an active
-              subscription to unlock access.
+              checkout. TerraLedger handles product usage and app access through
+              the live platform at terraledger.net.
             </p>
           </div>
         </div>
@@ -1138,8 +1400,8 @@ function LoginPage() {
             fontSize: isMobile ? 16 : 18,
           }}
         >
-          Use this page to route customers into the TerraLedger app. Later,
-          this button should link directly to your real product login URL.
+          Use this page to route customers directly into the live TerraLedger
+          platform.
         </p>
       </section>
 
@@ -1162,18 +1424,64 @@ function LoginPage() {
             Customer Login Portal
           </h2>
           <p style={{ ...cardTextStyle, marginBottom: 24 }}>
-            Customers with an active subscription should be able to log into
-            TerraLedger from here.
+            Customers with an active subscription can log in directly through
+            TerraLedger.
           </p>
-          <button
+
+          <div
             style={{
-              ...primaryButtonStyle,
-              width: isMobile ? "100%" : "auto",
-              marginTop: 0,
+              display: "flex",
+              gap: 12,
+              justifyContent: "center",
+              flexWrap: "wrap",
+              flexDirection: isMobile ? "column" : "row",
             }}
           >
-            Go To TerraLedger Login
-          </button>
+            <a
+              href={TERRALEDGER_LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...primaryButtonStyle,
+                width: isMobile ? "100%" : "auto",
+                marginTop: 0,
+                textDecoration: "none",
+                display: "inline-block",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+            >
+              Go To TerraLedger Login
+            </a>
+
+            <a
+              href={TERRALEDGER_REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...navButtonSecondary,
+                width: isMobile ? "100%" : "auto",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+            >
+              Register
+            </a>
+
+            <a
+              href={TERRALEDGER_BILLING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...navButtonSecondary,
+                width: isMobile ? "100%" : "auto",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+            >
+              Billing
+            </a>
+          </div>
         </div>
       </section>
     </Layout>
@@ -1762,6 +2070,27 @@ const footerLink = {
   color: palette.sand,
   textDecoration: "none",
   lineHeight: 2,
+};
+
+const miniCardLabelStyle = {
+  color: palette.sand,
+  textTransform: "uppercase",
+  letterSpacing: 1.4,
+  fontSize: 12,
+  fontWeight: 700,
+};
+
+const miniCardTitleStyle = {
+  marginTop: 8,
+  fontSize: 22,
+  fontWeight: 800,
+};
+
+const miniCardTextStyle = {
+  color: palette.text,
+  opacity: 0.92,
+  lineHeight: 1.75,
+  margin: "10px 0 0",
 };
 
 export default function App() {
