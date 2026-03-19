@@ -38,31 +38,33 @@ function Layout({ children }) {
           zIndex: 20,
         }}
       >
-        <div style={headerInnerStyle}>
-          <div style={brandWrapStyle}>
-            <div style={{ fontSize: 28, fontWeight: 800 }}>Spencer Softwares LLC</div>
-            <div style={{ color: palette.sand, fontSize: 14 }}>
-              Software that keeps real business moving
+        <div style={headerShellStyle}>
+          <div style={headerLeftStyle}>
+            <div>
+              <div style={{ fontSize: 28, fontWeight: 800 }}>Spencer Softwares LLC</div>
+              <div style={{ color: palette.sand, fontSize: 14 }}>
+                Software that keeps real business moving
+              </div>
             </div>
-          </div>
 
-          <nav style={mainNavStyle}>
-            <Link style={navLinkStyle} to="/">
-              Home
-            </Link>
-            <Link style={navLinkStyle} to="/pricing">
-              Pricing
-            </Link>
-            <Link style={navLinkStyle} to="/about">
-              About
-            </Link>
-            <Link style={navLinkStyle} to="/contact">
-              Contact
-            </Link>
-            <Link style={navButtonPrimary} to="/terraledger">
-              Get Started
-            </Link>
-          </nav>
+            <nav style={mainNavStyle}>
+              <Link style={navLinkStyle} to="/">
+                Home
+              </Link>
+              <Link style={navLinkStyle} to="/pricing">
+                Pricing
+              </Link>
+              <Link style={navLinkStyle} to="/about">
+                About
+              </Link>
+              <Link style={navLinkStyle} to="/contact">
+                Contact
+              </Link>
+              <Link style={navButtonPrimary} to="/terraledger">
+                Get Started
+              </Link>
+            </nav>
+          </div>
 
           <div style={topRightNavWrapStyle}>
             <Link style={topRightLoginStyle} to="/login">
@@ -792,6 +794,25 @@ const headerInnerStyle = {
   alignItems: "center",
 };
 
+const headerShellStyle = {
+  maxWidth: 1400,
+  margin: "0 auto",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
+  gap: 24,
+  flexWrap: "wrap",
+};
+
+const headerLeftStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  gap: 16,
+  flex: 1,
+  minWidth: 320,
+};
+
 const brandWrapStyle = {
   minWidth: 240,
 };
@@ -800,7 +821,7 @@ const mainNavStyle = {
   display: "flex",
   justifyContent: "flex-start",
   alignItems: "center",
-  gap: 22,
+  gap: 18,
   flexWrap: "wrap",
 };
 
