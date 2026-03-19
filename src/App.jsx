@@ -32,77 +32,69 @@ function Layout({ children }) {
         style={{
           padding: "18px 32px",
           borderBottom: `1px solid ${palette.border}`,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: 16,
           position: "sticky",
           top: 0,
           background: palette.backgroundDeep,
-          zIndex: 10,
+          zIndex: 20,
         }}
       >
-        <div>
-          <div style={{ fontSize: 28, fontWeight: 800 }}>Spencer Softwares LLC</div>
-          <div style={{ color: palette.sand, fontSize: 14 }}>
-            Software that keeps real business moving
+        <div style={headerInnerStyle}>
+          <div style={brandWrapStyle}>
+            <div style={{ fontSize: 28, fontWeight: 800 }}>Spencer Softwares LLC</div>
+            <div style={{ color: palette.sand, fontSize: 14 }}>
+              Software that keeps real business moving
+            </div>
+          </div>
+
+          <nav style={mainNavStyle}>
+            <Link style={navLinkStyle} to="/">
+              Home
+            </Link>
+            <Link style={navLinkStyle} to="/pricing">
+              Pricing
+            </Link>
+            <Link style={navLinkStyle} to="/about">
+              About
+            </Link>
+            <Link style={navLinkStyle} to="/contact">
+              Contact
+            </Link>
+            <Link style={navButtonPrimary} to="/terraledger">
+              Get Started
+            </Link>
+          </nav>
+
+          <div style={topRightNavWrapStyle}>
+            <Link style={topRightLoginStyle} to="/login">
+              Customer Login
+            </Link>
+
+            <div style={{ position: "relative", alignSelf: "flex-end" }}>
+              <button
+                type="button"
+                onClick={() => setProductsOpen((v) => !v)}
+                style={productsButtonStyle}
+              >
+                Products <span style={{ fontSize: 12 }}>▼</span>
+              </button>
+
+              {productsOpen && (
+                <div style={dropdownMenuStyle}>
+                  <Link
+                    style={dropdownItemStyle}
+                    to="/terraledger"
+                    onClick={() => setProductsOpen(false)}
+                  >
+                    TerraLedger
+                  </Link>
+                  <div style={dropdownSectionLabelStyle}>More software coming soon</div>
+                  <div style={dropdownMutedItemStyle}>Operations tools</div>
+                  <div style={dropdownMutedItemStyle}>Business workflow software</div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-
-        <nav
-          style={{
-            display: "flex",
-            gap: 18,
-            flexWrap: "wrap",
-            alignItems: "center",
-          }}
-        >
-          <Link style={navLinkStyle} to="/">
-            Home
-          </Link>
-
-          <div style={{ position: "relative" }}>
-            <button
-              type="button"
-              onClick={() => setProductsOpen((v) => !v)}
-              style={dropdownToggleStyle}
-            >
-              Products <span style={{ fontSize: 12 }}>▼</span>
-            </button>
-
-            {productsOpen && (
-              <div style={dropdownMenuStyle}>
-                <Link
-                  style={dropdownItemStyle}
-                  to="/terraledger"
-                  onClick={() => setProductsOpen(false)}
-                >
-                  TerraLedger
-                </Link>
-                <div style={dropdownSectionLabelStyle}>More software coming soon</div>
-                <div style={dropdownMutedItemStyle}>Operations tools</div>
-                <div style={dropdownMutedItemStyle}>Business workflow software</div>
-              </div>
-            )}
-          </div>
-
-          <Link style={navLinkStyle} to="/pricing">
-            Pricing
-          </Link>
-          <Link style={navLinkStyle} to="/about">
-            About
-          </Link>
-          <Link style={navLinkStyle} to="/contact">
-            Contact
-          </Link>
-          <Link style={navButtonSecondary} to="/login">
-            Customer Login
-          </Link>
-          <Link style={navButtonPrimary} to="/terraledger">
-            Get Started
-          </Link>
-        </nav>
       </header>
 
       <main>{children}</main>
@@ -128,6 +120,7 @@ function Layout({ children }) {
               bookkeeping, and day-to-day operations.
             </p>
           </div>
+
           <div>
             <div style={footerTitle}>Products</div>
             <div>
@@ -141,6 +134,7 @@ function Layout({ children }) {
               </Link>
             </div>
           </div>
+
           <div>
             <div style={footerTitle}>Company</div>
             <div>
@@ -154,6 +148,7 @@ function Layout({ children }) {
               </Link>
             </div>
           </div>
+
           <div>
             <div style={footerTitle}>Legal & Business</div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
@@ -187,6 +182,7 @@ function HomePage() {
             billing workflows, and a better way to manage real business
             activity.
           </p>
+
           <div
             style={{
               display: "flex",
@@ -206,9 +202,7 @@ function HomePage() {
 
         <div style={heroCardStyle}>
           <div style={panelStyle}>
-            <div style={{ color: palette.sand, fontSize: 14 }}>
-              Featured Product
-            </div>
+            <div style={{ color: palette.sand, fontSize: 14 }}>Featured Product</div>
             <div style={{ fontSize: 32, fontWeight: 800, marginTop: 10 }}>
               TerraLedger
             </div>
@@ -223,14 +217,11 @@ function HomePage() {
               daily office control in one platform.
             </p>
           </div>
+
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
             <div style={panelStyle}>
-              <div style={{ color: palette.sand, fontSize: 14 }}>
-                Website Flow
-              </div>
-              <div style={{ fontWeight: 700, marginTop: 8 }}>
-                Website-first access
-              </div>
+              <div style={{ color: palette.sand, fontSize: 14 }}>Website Flow</div>
+              <div style={{ fontWeight: 700, marginTop: 8 }}>Website-first access</div>
               <div
                 style={{
                   color: palette.text,
@@ -243,13 +234,10 @@ function HomePage() {
                 TerraLedger access unlocks.
               </div>
             </div>
+
             <div style={panelStyle}>
-              <div style={{ color: palette.sand, fontSize: 14 }}>
-                Access Model
-              </div>
-              <div style={{ fontWeight: 700, marginTop: 8 }}>
-                Subscription-gated
-              </div>
+              <div style={{ color: palette.sand, fontSize: 14 }}>Access Model</div>
+              <div style={{ fontWeight: 700, marginTop: 8 }}>Subscription-gated</div>
               <div
                 style={{
                   color: palette.text,
@@ -270,9 +258,8 @@ function HomePage() {
           <div style={eyebrowStyle}>Why Spencer Softwares</div>
           <h2 style={sectionTitleStyle}>Built for real operators, not just demos.</h2>
           <p style={sectionTextStyle}>
-            Spencer Softwares is being shaped to feel professional,
-            trustworthy, and ready to grow into multiple software products over
-            time.
+            Spencer Softwares is being shaped to feel professional, trustworthy,
+            and ready to grow into multiple software products over time.
           </p>
         </div>
 
@@ -380,12 +367,10 @@ function TerraLedgerPage() {
       </section>
 
       <section id="pricing" style={{ ...sectionStyle, paddingTop: 8 }}>
-        <div style={sectionHeadingWrap}>
+        <div style={sectionHeadingWrapCentered}>
           <div style={eyebrowStyle}>TerraLedger Pricing</div>
-          <h2 style={sectionTitleStyle}>
-            Choose the TerraLedger plan that fits your business.
-          </h2>
-          <p style={sectionTextStyle}>
+          <h2 style={sectionTitleStyle}>Choose the TerraLedger plan that fits your business.</h2>
+          <p style={sectionTextStyleCentered}>
             TerraLedger pricing lives here so customers go straight from product
             details to the correct checkout flow.
           </p>
@@ -408,6 +393,7 @@ function TerraLedgerPage() {
                     <span style={pricingSubStyle}>{plan.sub}</span>
                   </div>
                 </div>
+
                 <div
                   style={{
                     ...pricingBadgeStyle,
@@ -523,6 +509,7 @@ function AboutPage() {
               direction for the rest of the brand.
             </p>
           </div>
+
           <div style={cardStyle}>
             <h2 style={cardHeadingStyle}>The Structure</h2>
             <p style={cardTextStyle}>
@@ -788,6 +775,46 @@ function FeatureCard({ title, text }) {
   );
 }
 
+const headerInnerStyle = {
+  maxWidth: 1400,
+  margin: "0 auto",
+  display: "grid",
+  gridTemplateColumns: "auto 1fr auto",
+  gap: 28,
+  alignItems: "center",
+};
+
+const brandWrapStyle = {
+  minWidth: 240,
+};
+
+const mainNavStyle = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: 22,
+  flexWrap: "wrap",
+};
+
+const topRightNavWrapStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-end",
+  gap: 10,
+  minWidth: 180,
+};
+
+const topRightLoginStyle = {
+  background: "transparent",
+  color: palette.text,
+  textDecoration: "none",
+  padding: "8px 14px",
+  borderRadius: 12,
+  fontWeight: 700,
+  border: `1px solid ${palette.border}`,
+  display: "inline-block",
+};
+
 const navLinkStyle = {
   color: palette.text,
   textDecoration: "none",
@@ -816,7 +843,7 @@ const navButtonSecondary = {
   display: "inline-block",
 };
 
-const dropdownToggleStyle = {
+const productsButtonStyle = {
   background: "transparent",
   color: palette.text,
   border: `1px solid ${palette.border}`,
@@ -824,19 +851,20 @@ const dropdownToggleStyle = {
   padding: "10px 14px",
   fontWeight: 700,
   cursor: "pointer",
+  minWidth: 138,
 };
 
 const dropdownMenuStyle = {
   position: "absolute",
-  top: "calc(100% + 4px)",
-  left: 0,
+  top: "calc(100% + 8px)",
+  right: 0,
   minWidth: 240,
   background: palette.panel,
   border: `1px solid ${palette.border}`,
   borderRadius: 16,
   padding: 10,
   boxShadow: "0 18px 40px rgba(0,0,0,0.30)",
-  zIndex: 20,
+  zIndex: 30,
 };
 
 const dropdownItemStyle = {
@@ -921,6 +949,12 @@ const sectionHeadingWrap = {
   marginBottom: 26,
 };
 
+const sectionHeadingWrapCentered = {
+  maxWidth: 760,
+  margin: "0 auto 26px",
+  textAlign: "center",
+};
+
 const sectionTitleStyle = {
   fontSize: 36,
   margin: "10px 0 12px",
@@ -930,6 +964,13 @@ const sectionTextStyle = {
   color: palette.text,
   lineHeight: 1.8,
   opacity: 0.9,
+};
+
+const sectionTextStyleCentered = {
+  color: palette.text,
+  lineHeight: 1.8,
+  opacity: 0.9,
+  textAlign: "center",
 };
 
 const eyebrowStyle = {
@@ -1117,6 +1158,10 @@ const pageHeroStyle = {
   maxWidth: 980,
   margin: "0 auto",
   padding: "74px 24px 24px",
+  textAlign: "center",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
 };
 
 const pageTitleStyle = {
@@ -1132,6 +1177,8 @@ const pageTextStyle = {
   fontSize: 18,
   maxWidth: 800,
   opacity: 0.92,
+  margin: "0 auto",
+  textAlign: "center",
 };
 
 const listItemStyle = {
