@@ -492,7 +492,7 @@ function TerraLedgerPage() {
       name: "Yearly",
       price: "$1,168",
       sub: "/year",
-      note: "Best value for full-time use with stronger long-term savings.",
+      note: "30% off Monthly for the best value for full-time use with stronger long-term savings.",
       details: [
         "Full TerraLedger access",
         "Annual billing value",
