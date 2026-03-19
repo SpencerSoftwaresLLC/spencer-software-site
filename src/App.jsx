@@ -19,7 +19,7 @@ const palette = {
 const TERRALEDGER_URL = "https://terraledger.net";
 const TERRALEDGER_LOGIN_URL = "https://terraledger.net/login";
 const TERRALEDGER_REGISTER_URL = "https://terraledger.net/register";
-const TERRALEDGER_DOWNLOAD_URL = "https://github.com/SpencerSoftwaresLLC/terra-ledger/releases/download/v1.0.2/TerraLedger-Setup.exe";
+const TERRALEDGER_DOWNLOAD_URL = "https://github.com/SpencerSoftwaresLLC/terra-ledger/releases/latest/download/TerraLedger-Setup.exe";
 
 function useIsMobile(breakpoint = 768) {
   const getIsMobile = () => window.innerWidth <= breakpoint;
