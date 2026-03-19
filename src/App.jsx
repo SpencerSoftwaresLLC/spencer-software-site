@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const palette = {
   background: "#13212b",
@@ -16,8 +16,25 @@ const palette = {
   greenSoft: "#8fd59a",
 };
 
+function useIsMobile(breakpoint = 768) {
+  const getIsMobile = () => window.innerWidth <= breakpoint;
+  const [isMobile, setIsMobile] = useState(getIsMobile());
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(getIsMobile());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 function Layout({ children }) {
   const [productsOpen, setProductsOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   return (
     <div
@@ -30,7 +47,7 @@ function Layout({ children }) {
     >
       <header
         style={{
-          padding: "18px 32px",
+          padding: isMobile ? "16px 16px" : "18px 32px",
           borderBottom: `1px solid ${palette.border}`,
           position: "sticky",
           top: 0,
@@ -38,50 +55,123 @@ function Layout({ children }) {
           zIndex: 20,
         }}
       >
-        <div style={headerShellStyle}>
-          <div style={headerLeftStyle}>
+        <div
+          style={{
+            ...headerShellStyle,
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: isMobile ? "stretch" : "flex-start",
+            gap: isMobile ? 18 : 24,
+          }}
+        >
+          <div
+            style={{
+              ...headerLeftStyle,
+              minWidth: 0,
+              width: "100%",
+              gap: isMobile ? 14 : 16,
+            }}
+          >
             <div>
-              <div style={{ fontSize: 28, fontWeight: 800 }}>Spencer Softwares LLC</div>
-              <div style={{ color: palette.sand, fontSize: 14 }}>
+              <div
+                style={{
+                  fontSize: isMobile ? 22 : 28,
+                  fontWeight: 800,
+                  lineHeight: 1.15,
+                }}
+              >
+                Spencer Softwares LLC
+              </div>
+              <div
+                style={{
+                  color: palette.sand,
+                  fontSize: isMobile ? 13 : 14,
+                  marginTop: 4,
+                }}
+              >
                 Software that keeps real business moving
               </div>
             </div>
 
-            <nav style={mainNavStyle}>
-              <Link style={navLinkStyle} to="/">
+            <nav
+              style={{
+                ...mainNavStyle,
+                width: "100%",
+                gap: isMobile ? 12 : 18,
+                flexDirection: isMobile ? "column" : "row",
+                alignItems: isMobile ? "stretch" : "center",
+              }}
+            >
+              <Link style={{ ...navLinkStyle, width: isMobile ? "100%" : "auto" }} to="/">
                 Home
               </Link>
-              <Link style={navLinkStyle} to="/pricing">
+              <Link style={{ ...navLinkStyle, width: isMobile ? "100%" : "auto" }} to="/pricing">
                 Pricing
               </Link>
-              <Link style={navLinkStyle} to="/about">
+              <Link style={{ ...navLinkStyle, width: isMobile ? "100%" : "auto" }} to="/about">
                 About
               </Link>
-              <Link style={navLinkStyle} to="/contact">
+              <Link style={{ ...navLinkStyle, width: isMobile ? "100%" : "auto" }} to="/contact">
                 Contact
               </Link>
-              <Link style={navButtonPrimary} to="/terraledger">
+              <Link
+                style={{
+                  ...navButtonPrimary,
+                  width: isMobile ? "100%" : "auto",
+                  textAlign: "center",
+                  boxSizing: "border-box",
+                }}
+                to="/terraledger"
+              >
                 Get Started
               </Link>
             </nav>
           </div>
 
-          <div style={topRightNavWrapStyle}>
-            <Link style={topRightLoginStyle} to="/login">
+          <div
+            style={{
+              ...topRightNavWrapStyle,
+              width: isMobile ? "100%" : "auto",
+              alignItems: isMobile ? "stretch" : "flex-end",
+              gap: 10,
+            }}
+          >
+            <Link
+              style={{
+                ...topRightLoginStyle,
+                width: isMobile ? "100%" : "auto",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+              to="/login"
+            >
               Customer Login
             </Link>
 
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative", width: isMobile ? "100%" : "auto" }}>
               <button
                 type="button"
                 onClick={() => setProductsOpen((v) => !v)}
-                style={productsButtonStyle}
+                style={{
+                  ...productsButtonStyle,
+                  width: isMobile ? "100%" : 138,
+                  boxSizing: "border-box",
+                }}
               >
                 Products <span style={{ fontSize: 12 }}>▼</span>
               </button>
 
               {productsOpen && (
-                <div style={dropdownMenuStyle}>
+                <div
+                  style={{
+                    ...dropdownMenuStyle,
+                    position: isMobile ? "relative" : "absolute",
+                    top: isMobile ? 10 : "calc(100% + 8px)",
+                    right: isMobile ? "auto" : 0,
+                    width: isMobile ? "100%" : 240,
+                    minWidth: isMobile ? "100%" : 240,
+                    boxSizing: "border-box",
+                  }}
+                >
                   <Link
                     style={dropdownItemStyle}
                     to="/terraledger"
@@ -105,13 +195,15 @@ function Layout({ children }) {
         style={{
           borderTop: `1px solid ${palette.border}`,
           marginTop: 60,
-          padding: "28px 32px",
+          padding: isMobile ? "24px 16px" : "28px 32px",
         }}
       >
         <div
           style={{
+            maxWidth: 1200,
+            margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(220px, 1fr))",
             gap: 24,
           }}
         >
@@ -172,13 +264,36 @@ function Layout({ children }) {
 }
 
 function HomePage() {
+  const isMobile = useIsMobile();
+
   return (
     <Layout>
-      <section style={heroWrapStyle}>
+      <section
+        style={{
+          ...heroWrapStyle,
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: isMobile ? 22 : 28,
+          padding: isMobile ? "42px 16px 24px" : "72px 24px 32px",
+        }}
+      >
         <div>
           <div style={eyebrowStyle}>SpencerSoftwaresLLC.com</div>
-          <h1 style={heroTitleStyle}>Software built to keep work moving.</h1>
-          <p style={heroTextStyle}>
+          <h1
+            style={{
+              ...heroTitleStyle,
+              fontSize: isMobile ? "42px" : "clamp(40px, 6vw, 68px)",
+              lineHeight: isMobile ? 1.08 : 1.05,
+            }}
+          >
+            Software built to keep work moving.
+          </h1>
+          <p
+            style={{
+              ...heroTextStyle,
+              fontSize: isMobile ? 16 : 18,
+              maxWidth: "100%",
+            }}
+          >
             Spencer Softwares is the home for TerraLedger and future software
             products built for companies that need cleaner operations, stronger
             billing workflows, and a better way to manage real business
@@ -190,12 +305,29 @@ function HomePage() {
               gap: 14,
               flexWrap: "wrap",
               marginTop: 28,
+              flexDirection: isMobile ? "column" : "row",
             }}
           >
-            <Link style={navButtonPrimary} to="/terraledger">
+            <Link
+              style={{
+                ...navButtonPrimary,
+                width: isMobile ? "100%" : "auto",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+              to="/terraledger"
+            >
               Buy TerraLedger
             </Link>
-            <Link style={navButtonSecondary} to="/terraledger">
+            <Link
+              style={{
+                ...navButtonSecondary,
+                width: isMobile ? "100%" : "auto",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+              to="/terraledger"
+            >
               Explore Product
             </Link>
           </div>
@@ -206,7 +338,13 @@ function HomePage() {
             <div style={{ color: palette.sand, fontSize: 14 }}>
               Featured Product
             </div>
-            <div style={{ fontSize: 32, fontWeight: 800, marginTop: 10 }}>
+            <div
+              style={{
+                fontSize: isMobile ? 26 : 32,
+                fontWeight: 800,
+                marginTop: 10,
+              }}
+            >
               TerraLedger
             </div>
             <p
@@ -220,7 +358,13 @@ function HomePage() {
               daily office control in one platform.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+              gap: 14,
+            }}
+          >
             <div style={panelStyle}>
               <div style={{ color: palette.sand, fontSize: 14 }}>
                 Website Flow
@@ -262,10 +406,28 @@ function HomePage() {
         </div>
       </section>
 
-      <section style={sectionStyle}>
-        <div style={sectionHeadingWrapCentered}>
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "32px 16px" : "40px 24px",
+        }}
+      >
+        <div
+          style={{
+            ...sectionHeadingWrapCentered,
+            textAlign: isMobile ? "left" : "center",
+            margin: isMobile ? "0 0 26px" : "0 auto 26px",
+          }}
+        >
           <div style={eyebrowStyle}>Why Spencer Softwares</div>
-          <h2 style={sectionTitleStyle}>Built for real operators, not just demos.</h2>
+          <h2
+            style={{
+              ...sectionTitleStyle,
+              fontSize: isMobile ? 28 : 36,
+            }}
+          >
+            Built for real operators, not just demos.
+          </h2>
           <p style={sectionTextStyle}>
             Spencer Softwares is being shaped to feel professional,
             trustworthy, and ready to grow into multiple software products over
@@ -273,7 +435,12 @@ function HomePage() {
           </p>
         </div>
 
-        <div style={gridThreeStyle}>
+        <div
+          style={{
+            ...gridThreeStyle,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(260px, 1fr))",
+          }}
+        >
           <FeatureCard
             title="Practical Business Tools"
             text="Software designed around actual workflows like billing, quotes, job tracking, bookkeeping, and payroll."
@@ -293,6 +460,8 @@ function HomePage() {
 }
 
 function TerraLedgerPage() {
+  const isMobile = useIsMobile();
+
   const features = [
     "Customer management",
     "Quote creation and conversion",
@@ -337,20 +506,49 @@ function TerraLedgerPage() {
 
   return (
     <Layout>
-      <section style={pageHeroStyle}>
+      <section
+        style={{
+          ...pageHeroStyle,
+          padding: isMobile ? "46px 16px 18px" : "74px 24px 24px",
+        }}
+      >
         <div style={eyebrowStyle}>Product</div>
-        <h1 style={pageTitleStyle}>TerraLedger</h1>
-        <p style={pageTextStyle}>
+        <h1
+          style={{
+            ...pageTitleStyle,
+            fontSize: isMobile ? "40px" : "clamp(38px, 6vw, 58px)",
+          }}
+        >
+          TerraLedger
+        </h1>
+        <p
+          style={{
+            ...pageTextStyle,
+            fontSize: isMobile ? 16 : 18,
+          }}
+        >
           TerraLedger is the flagship software product under Spencer Softwares,
           designed for companies that need operational control without juggling
           disconnected systems.
         </p>
       </section>
 
-      <section style={sectionStyle}>
-        <div style={gridTwoStyle}>
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "32px 16px" : "40px 24px",
+        }}
+      >
+        <div
+          style={{
+            ...gridTwoStyle,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
+          }}
+        >
           <div style={cardStyle}>
-            <h2 style={cardHeadingStyle}>What TerraLedger Handles</h2>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              What TerraLedger Handles
+            </h2>
             <div style={{ display: "grid", gap: 12, marginTop: 18 }}>
               {features.map((item) => (
                 <div key={item} style={listItemStyle}>
@@ -361,14 +559,24 @@ function TerraLedgerPage() {
           </div>
 
           <div style={cardStyle}>
-            <h2 style={cardHeadingStyle}>Who It Is For</h2>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              Who It Is For
+            </h2>
             <p style={cardTextStyle}>
               TerraLedger is built for landscaping, hauling, yard material,
               field service, and growing local businesses that need reliable
               office software for daily operations.
             </p>
             <div style={{ marginTop: 24 }}>
-              <a style={navButtonPrimary} href="#pricing">
+              <a
+                style={{
+                  ...navButtonPrimary,
+                  width: isMobile ? "100%" : "auto",
+                  textAlign: "center",
+                  boxSizing: "border-box",
+                }}
+                href="#pricing"
+              >
                 View TerraLedger Pricing
               </a>
             </div>
@@ -376,32 +584,75 @@ function TerraLedgerPage() {
         </div>
       </section>
 
-      <section id="pricing" style={{ ...sectionStyle, paddingTop: 8 }}>
-        <div style={sectionHeadingWrapCentered}>
+      <section
+        id="pricing"
+        style={{
+          ...sectionStyle,
+          paddingTop: 8,
+          paddingLeft: isMobile ? 16 : 24,
+          paddingRight: isMobile ? 16 : 24,
+        }}
+      >
+        <div
+          style={{
+            ...sectionHeadingWrapCentered,
+            textAlign: isMobile ? "left" : "center",
+            margin: isMobile ? "0 0 26px" : "0 auto 26px",
+          }}
+        >
           <div style={eyebrowStyle}>TerraLedger Pricing</div>
-          <h2 style={sectionTitleStyle}>
+          <h2
+            style={{
+              ...sectionTitleStyle,
+              fontSize: isMobile ? 28 : 36,
+            }}
+          >
             Choose the TerraLedger plan that fits your business.
           </h2>
-          <p style={sectionTextStyleCentered}>
+          <p
+            style={{
+              ...sectionTextStyleCentered,
+              textAlign: isMobile ? "left" : "center",
+            }}
+          >
             TerraLedger pricing lives here so customers go straight from product
             details to the correct checkout flow.
           </p>
         </div>
 
-        <div style={pricingGridStyle}>
+        <div
+          style={{
+            ...pricingGridStyle,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
+          }}
+        >
           {plans.map((plan) => (
             <div
               key={plan.name}
               style={{
                 ...pricingCardStyle,
                 borderTop: `4px solid ${plan.accent}`,
+                padding: isMobile ? 22 : 30,
               }}
             >
-              <div style={pricingCardHeaderStyle}>
+              <div
+                style={{
+                  ...pricingCardHeaderStyle,
+                  flexDirection: isMobile ? "column" : "row",
+                  alignItems: isMobile ? "flex-start" : "flex-start",
+                }}
+              >
                 <div>
                   <div style={pricingPlanLabelStyle}>{plan.name}</div>
                   <div style={pricingPriceRowStyle}>
-                    <span style={pricingPriceStyle}>{plan.price}</span>
+                    <span
+                      style={{
+                        ...pricingPriceStyle,
+                        fontSize: isMobile ? 42 : 54,
+                      }}
+                    >
+                      {plan.price}
+                    </span>
                     <span style={pricingSubStyle}>{plan.sub}</span>
                   </div>
                 </div>
@@ -437,6 +688,8 @@ function TerraLedgerPage() {
                       ...primaryButtonStyle,
                       display: "inline-block",
                       textAlign: "center",
+                      width: isMobile ? "100%" : "auto",
+                      boxSizing: "border-box",
                     }}
                   >
                     {plan.button}
@@ -450,6 +703,8 @@ function TerraLedgerPage() {
                       ...primaryButtonStyle,
                       display: "inline-block",
                       textAlign: "center",
+                      width: isMobile ? "100%" : "auto",
+                      boxSizing: "border-box",
                     }}
                   >
                     {plan.button}
@@ -465,28 +720,67 @@ function TerraLedgerPage() {
 }
 
 function PricingPage() {
+  const isMobile = useIsMobile();
+
   return (
     <Layout>
-      <section style={pageHeroStyle}>
+      <section
+        style={{
+          ...pageHeroStyle,
+          padding: isMobile ? "46px 16px 18px" : "74px 24px 24px",
+        }}
+      >
         <div style={eyebrowStyle}>Product Pricing</div>
-        <h1 style={pageTitleStyle}>Choose a software product to view its pricing.</h1>
-        <p style={pageTextStyle}>
+        <h1
+          style={{
+            ...pageTitleStyle,
+            fontSize: isMobile ? "34px" : "clamp(38px, 6vw, 58px)",
+          }}
+        >
+          Choose a software product to view its pricing.
+        </h1>
+        <p
+          style={{
+            ...pageTextStyle,
+            fontSize: isMobile ? 16 : 18,
+          }}
+        >
           Each product under Spencer Softwares should lead to its own dedicated
           pricing experience so customers land on the correct checkout path.
         </p>
       </section>
 
-      <section style={sectionStyle}>
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "32px 16px" : "40px 24px",
+        }}
+      >
         <div style={pricingIntroWrapStyle}>
           <div style={pricingIntroCardStyle}>
             <div style={pricingMiniLabelStyle}>Available now</div>
-            <div style={pricingMiniTitleStyle}>TerraLedger</div>
+            <div
+              style={{
+                ...pricingMiniTitleStyle,
+                fontSize: isMobile ? 24 : 28,
+              }}
+            >
+              TerraLedger
+            </div>
             <p style={pricingMiniTextStyle}>
               View TerraLedger features, pricing options, and its dedicated
               purchase flow all in one place.
             </p>
             <div style={{ marginTop: 18 }}>
-              <Link style={navButtonPrimary} to="/terraledger#pricing">
+              <Link
+                style={{
+                  ...navButtonPrimary,
+                  width: isMobile ? "100%" : "auto",
+                  textAlign: "center",
+                  boxSizing: "border-box",
+                }}
+                to="/terraledger#pricing"
+              >
                 View TerraLedger Pricing
               </Link>
             </div>
@@ -498,22 +792,53 @@ function PricingPage() {
 }
 
 function AboutPage() {
+  const isMobile = useIsMobile();
+
   return (
     <Layout>
-      <section style={pageHeroStyle}>
+      <section
+        style={{
+          ...pageHeroStyle,
+          padding: isMobile ? "46px 16px 18px" : "74px 24px 24px",
+        }}
+      >
         <div style={eyebrowStyle}>About</div>
-        <h1 style={pageTitleStyle}>Building software with a business-first mindset.</h1>
-        <p style={pageTextStyle}>
+        <h1
+          style={{
+            ...pageTitleStyle,
+            fontSize: isMobile ? "34px" : "clamp(38px, 6vw, 58px)",
+          }}
+        >
+          Building software with a business-first mindset.
+        </h1>
+        <p
+          style={{
+            ...pageTextStyle,
+            fontSize: isMobile ? 16 : 18,
+          }}
+        >
           Spencer Softwares is being built as a company brand for software
           products focused on practical operations, clear billing, and tools
           that help businesses run smoother.
         </p>
       </section>
 
-      <section style={sectionStyle}>
-        <div style={gridTwoStyle}>
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "32px 16px" : "40px 24px",
+        }}
+      >
+        <div
+          style={{
+            ...gridTwoStyle,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
+          }}
+        >
           <div style={cardStyle}>
-            <h2 style={cardHeadingStyle}>The Goal</h2>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              The Goal
+            </h2>
             <p style={cardTextStyle}>
               Create software that solves actual work problems instead of adding
               complexity. TerraLedger is the first step, and it sets the
@@ -521,7 +846,9 @@ function AboutPage() {
             </p>
           </div>
           <div style={cardStyle}>
-            <h2 style={cardHeadingStyle}>The Structure</h2>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              The Structure
+            </h2>
             <p style={cardTextStyle}>
               SpencerSoftwaresLLC.com handles branding, trust, pricing, and
               checkout. The app handles product usage and requires an active
@@ -535,6 +862,8 @@ function AboutPage() {
 }
 
 function ContactPage() {
+  const isMobile = useIsMobile();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -597,10 +926,27 @@ function ContactPage() {
 
   return (
     <Layout>
-      <section style={pageHeroStyle}>
+      <section
+        style={{
+          ...pageHeroStyle,
+          padding: isMobile ? "46px 16px 18px" : "74px 24px 24px",
+        }}
+      >
         <div style={eyebrowStyle}>Contact</div>
-        <h1 style={pageTitleStyle}>Tell us about your business needs.</h1>
-        <p style={pageTextStyle}>
+        <h1
+          style={{
+            ...pageTitleStyle,
+            fontSize: isMobile ? "34px" : "clamp(38px, 6vw, 58px)",
+          }}
+        >
+          Tell us about your business needs.
+        </h1>
+        <p
+          style={{
+            ...pageTextStyle,
+            fontSize: isMobile ? 16 : 18,
+          }}
+        >
           Whether you need a better workflow, cleaner billing, or software built
           around the way your business actually operates, Spencer Softwares is
           focused on practical solutions that help companies run more
@@ -608,11 +954,28 @@ function ContactPage() {
         </p>
       </section>
 
-      <section style={sectionStyle}>
-        <div style={contactWrapStyle}>
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "32px 16px" : "40px 24px",
+        }}
+      >
+        <div
+          style={{
+            ...contactWrapStyle,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(340px, 1fr))",
+          }}
+        >
           <div style={contactInfoCardStyle}>
             <div style={contactMiniLabelStyle}>Professional Consultation</div>
-            <h2 style={contactTitleStyle}>Let’s start the conversation.</h2>
+            <h2
+              style={{
+                ...contactTitleStyle,
+                fontSize: isMobile ? 28 : 34,
+              }}
+            >
+              Let’s start the conversation.
+            </h2>
             <p style={contactBodyStyle}>
               Share a few details about your company and what you are looking to
               improve. This page is built for product inquiries, software
@@ -637,7 +1000,13 @@ function ContactPage() {
           </div>
 
           <div style={contactFormCardStyle}>
-            <form onSubmit={handleSubmit} style={contactFormGridStyle}>
+            <form
+              onSubmit={handleSubmit}
+              style={{
+                ...contactFormGridStyle,
+                gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+              }}
+            >
               <div style={fieldWrapStyle}>
                 <label style={fieldLabelStyle}>Full Name</label>
                 <input
@@ -744,32 +1113,67 @@ function ContactPage() {
 }
 
 function LoginPage() {
+  const isMobile = useIsMobile();
+
   return (
     <Layout>
-      <section style={pageHeroStyle}>
+      <section
+        style={{
+          ...pageHeroStyle,
+          padding: isMobile ? "46px 16px 18px" : "74px 24px 24px",
+        }}
+      >
         <div style={eyebrowStyle}>Customer Access</div>
-        <h1 style={pageTitleStyle}>Log in to TerraLedger</h1>
-        <p style={pageTextStyle}>
+        <h1
+          style={{
+            ...pageTitleStyle,
+            fontSize: isMobile ? "36px" : "clamp(38px, 6vw, 58px)",
+          }}
+        >
+          Log in to TerraLedger
+        </h1>
+        <p
+          style={{
+            ...pageTextStyle,
+            fontSize: isMobile ? 16 : 18,
+          }}
+        >
           Use this page to route customers into the TerraLedger app. Later,
           this button should link directly to your real product login URL.
         </p>
       </section>
 
-      <section style={sectionStyle}>
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "32px 16px" : "40px 24px",
+        }}
+      >
         <div
           style={{
             ...cardStyle,
             maxWidth: 700,
             margin: "0 auto",
             textAlign: "center",
+            padding: isMobile ? 20 : 24,
           }}
         >
-          <h2 style={cardHeadingStyle}>Customer Login Portal</h2>
+          <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+            Customer Login Portal
+          </h2>
           <p style={{ ...cardTextStyle, marginBottom: 24 }}>
             Customers with an active subscription should be able to log into
             TerraLedger from here.
           </p>
-          <button style={primaryButtonStyle}>Go To TerraLedger Login</button>
+          <button
+            style={{
+              ...primaryButtonStyle,
+              width: isMobile ? "100%" : "auto",
+              marginTop: 0,
+            }}
+          >
+            Go To TerraLedger Login
+          </button>
         </div>
       </section>
     </Layout>
@@ -777,22 +1181,23 @@ function LoginPage() {
 }
 
 function FeatureCard({ title, text }) {
+  const isMobile = useIsMobile();
+
   return (
     <div style={cardStyle}>
-      <h3 style={{ marginTop: 0, fontSize: 22 }}>{title}</h3>
+      <h3
+        style={{
+          marginTop: 0,
+          fontSize: isMobile ? 20 : 22,
+          lineHeight: 1.2,
+        }}
+      >
+        {title}
+      </h3>
       <p style={cardTextStyle}>{text}</p>
     </div>
   );
 }
-
-const headerInnerStyle = {
-  maxWidth: 1400,
-  margin: "0 auto",
-  display: "grid",
-  gridTemplateColumns: "auto 1fr auto",
-  gap: 28,
-  alignItems: "center",
-};
 
 const headerShellStyle = {
   maxWidth: 1400,
@@ -811,10 +1216,6 @@ const headerLeftStyle = {
   gap: 16,
   flex: 1,
   minWidth: 320,
-};
-
-const brandWrapStyle = {
-  minWidth: 240,
 };
 
 const mainNavStyle = {
@@ -970,11 +1371,6 @@ const sectionStyle = {
   maxWidth: 1200,
   margin: "0 auto",
   padding: "40px 24px",
-};
-
-const sectionHeadingWrap = {
-  maxWidth: 760,
-  marginBottom: 26,
 };
 
 const sectionHeadingWrapCentered = {
