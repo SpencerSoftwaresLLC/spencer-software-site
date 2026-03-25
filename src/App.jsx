@@ -147,19 +147,6 @@ function Layout({ children }) {
               gap: 10,
             }}
           >
-            <a
-              href={TERRALEDGER_LOGIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                ...topRightLoginStyle,
-                width: isMobile ? "100%" : "auto",
-                textAlign: "center",
-                boxSizing: "border-box",
-              }}
-            >
-              Customer Login
-            </a>
 
             <div style={{ position: "relative", width: isMobile ? "100%" : "auto" }}>
               <button
@@ -1675,17 +1662,6 @@ const topRightNavWrapStyle = {
   flexDirection: "column",
   alignItems: "flex-end",
   gap: 10,
-};
-
-const topRightLoginStyle = {
-  background: "transparent",
-  color: palette.text,
-  textDecoration: "none",
-  padding: "8px 14px",
-  borderRadius: 12,
-  fontWeight: 700,
-  border: `1px solid ${palette.border}`,
-  display: "inline-block",
 };
 
 const navLinkStyle = {
