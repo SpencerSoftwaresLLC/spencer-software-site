@@ -16,10 +16,14 @@ const palette = {
   greenSoft: "#8fd59a",
 };
 
+const BRAND_NAME = "TerraLedger";
+const BRAND_NAME_TM = "TerraLedger™";
+
 const TERRALEDGER_URL = "https://terraledger.net";
 const TERRALEDGER_LOGIN_URL = "https://terraledger.net/login";
 const TERRALEDGER_REGISTER_URL = "https://terraledger.net/register";
-const TERRALEDGER_DOWNLOAD_URL = "https://github.com/SpencerSoftwaresLLC/terra-ledger/releases/latest/download/TerraLedger-Setup.exe";
+const TERRALEDGER_DOWNLOAD_URL =
+  "https://github.com/SpencerSoftwaresLLC/terra-ledger/releases/latest/download/TerraLedger-Setup.exe";
 
 function useIsMobile(breakpoint = 768) {
   const getIsMobile = () => window.innerWidth <= breakpoint;
@@ -118,6 +122,9 @@ function Layout({ children }) {
               <Link style={{ ...navLinkStyle, width: isMobile ? "100%" : "auto" }} to="/contact">
                 Contact
               </Link>
+              <Link style={{ ...navLinkStyle, width: isMobile ? "100%" : "auto" }} to="/legal">
+                Legal
+              </Link>
               <Link
                 style={{
                   ...navButtonPrimary,
@@ -184,7 +191,7 @@ function Layout({ children }) {
                     to="/terraledger"
                     onClick={() => setProductsOpen(false)}
                   >
-                    TerraLedger
+                    {BRAND_NAME_TM}
                   </Link>
                   <div style={dropdownSectionLabelStyle}>More software coming soon</div>
                   <div style={dropdownMutedItemStyle}>Operations tools</div>
@@ -226,7 +233,7 @@ function Layout({ children }) {
             <div style={footerTitle}>Products</div>
             <div>
               <Link style={footerLink} to="/terraledger">
-                TerraLedger
+                {BRAND_NAME_TM}
               </Link>
             </div>
             <div>
@@ -246,7 +253,7 @@ function Layout({ children }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Download TerraLedger
+                Download {BRAND_NAME}
               </a>
             </div>
           </div>
@@ -263,20 +270,24 @@ function Layout({ children }) {
                 Contact
               </Link>
             </div>
+            <div>
+              <Link style={footerLink} to="/legal">
+                Legal
+              </Link>
+            </div>
           </div>
 
           <div>
             <div style={footerTitle}>Legal & Business</div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              SpencerSoftwaresLLC.com is the home for the company brand, product
-              access, and software growth.
+              {BRAND_NAME_TM} is a trademark of Spencer Softwares LLC.
             </div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              Built to support software products with clean branding, pricing,
-              and customer access.
+              SpencerSoftwaresLLC.com serves as the company website for product
+              information, pricing, customer access, and software distribution.
             </div>
             <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              © Spencer Softwares LLC
+              © 2026 Spencer Softwares LLC. All rights reserved.
             </div>
           </div>
         </div>
@@ -316,7 +327,7 @@ function HomePage() {
               maxWidth: "100%",
             }}
           >
-            Spencer Softwares is the home for TerraLedger and future software
+            Spencer Softwares is the home for {BRAND_NAME_TM} and future software
             products built for companies that need cleaner operations, stronger
             billing workflows, and a better way to manage real business
             activity.
@@ -339,7 +350,7 @@ function HomePage() {
               }}
               to="/terraledger"
             >
-              Buy TerraLedger
+              Buy {BRAND_NAME}
             </Link>
             <a
               href={TERRALEDGER_DOWNLOAD_URL}
@@ -352,7 +363,7 @@ function HomePage() {
                 boxSizing: "border-box",
               }}
             >
-              Download TerraLedger
+              Download {BRAND_NAME}
             </a>
           </div>
         </div>
@@ -369,7 +380,7 @@ function HomePage() {
                 marginTop: 10,
               }}
             >
-              TerraLedger
+              {BRAND_NAME_TM}
             </div>
             <p
               style={{
@@ -405,10 +416,10 @@ function HomePage() {
                 }}
               >
                 Customers subscribe through SpencerSoftwaresLLC.com, then
-                TerraLedger access unlocks.
+                {` ${BRAND_NAME} `}access unlocks.
               </div>
             </div>
-            <div style={panelStyle}>
+            <div style={{ ...panelStyle, textAlign: "center" }}>
               <div style={{ color: palette.sand, fontSize: 14 }}>
                 Access Model
               </div>
@@ -421,10 +432,13 @@ function HomePage() {
                   opacity: 0.92,
                   marginTop: 8,
                   lineHeight: 1.6,
+                  maxWidth: 320,
+                  marginLeft: "auto",
+                  marginRight: "auto",
                 }}
               >
-                TerraLedger is being positioned for desktop delivery, giving
-                customers a clearer install and usage experience.
+                {BRAND_NAME_TM} is being positioned for desktop delivery with a
+                cleaner install path and a more professional customer experience.
               </div>
             </div>
           </div>
@@ -491,6 +505,7 @@ function HomePage() {
           style={{
             ...cardStyle,
             padding: isMobile ? 22 : 28,
+            textAlign: isMobile ? "left" : "center",
           }}
         >
           <div style={eyebrowStyle}>Desktop Access</div>
@@ -501,11 +516,17 @@ function HomePage() {
               fontSize: isMobile ? 28 : 34,
             }}
           >
-            TerraLedger desktop access is the next step.
+            {BRAND_NAME_TM} desktop access is the next step.
           </h2>
-          <p style={{ ...sectionTextStyle, maxWidth: 880 }}>
-            The Spencer Softwares site will handle product information and
-            billing while TerraLedger moves toward a downloadable desktop app
+          <p
+            style={{
+              ...sectionTextStyle,
+              maxWidth: 880,
+              margin: isMobile ? "0" : "0 auto",
+            }}
+          >
+            The Spencer Softwares site handles product information and billing
+            while {BRAND_NAME_TM} moves toward a downloadable desktop app
             experience.
           </p>
 
@@ -515,28 +536,29 @@ function HomePage() {
               gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
               gap: 16,
               marginTop: 22,
+              textAlign: isMobile ? "left" : "center",
             }}
           >
             <div style={panelStyle}>
               <div style={miniCardLabelStyle}>Purchase</div>
               <div style={miniCardTitleStyle}>Choose your plan</div>
               <p style={miniCardTextStyle}>
-                Start with the correct TerraLedger plan on the parent website.
+                Start with the correct {BRAND_NAME} plan on the parent website.
               </p>
             </div>
 
             <div style={panelStyle}>
               <div style={miniCardLabelStyle}>Install</div>
-              <div style={miniCardTitleStyle}>Download TerraLedger</div>
+              <div style={miniCardTitleStyle}>Download {BRAND_NAME}</div>
               <p style={miniCardTextStyle}>
-                Use the desktop download path as TerraLedger moves into a full
-                installable product.
+                Use the desktop download path as {BRAND_NAME_TM} moves into a
+                full installable product.
               </p>
               <a
                 href={TERRALEDGER_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ ...navButtonPrimary, marginTop: 8 }}
+                style={{ ...navButtonPrimary, marginTop: 12 }}
               >
                 Download
               </a>
@@ -546,14 +568,14 @@ function HomePage() {
               <div style={miniCardLabelStyle}>Access</div>
               <div style={miniCardTitleStyle}>Customer Login</div>
               <p style={miniCardTextStyle}>
-                Existing users can still sign in through TerraLedger customer
-                access.
+                Existing users can still sign in through {BRAND_NAME}
+                {` `}customer access.
               </p>
               <a
                 href={TERRALEDGER_LOGIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ ...navButtonSecondary, marginTop: 8 }}
+                style={{ ...navButtonSecondary, marginTop: 12 }}
               >
                 Customer Login
               </a>
@@ -576,7 +598,7 @@ function TerraLedgerPage() {
     "Ledger and bookkeeping controls",
     "Employee and payroll support",
     "Subscription-based access control",
-    "Windows desktop distribution path later",
+    "Windows desktop distribution path",
   ];
 
   const plans = [
@@ -586,7 +608,7 @@ function TerraLedgerPage() {
       sub: "/month",
       note: "Flexible recurring access for teams that want a monthly billing cycle.",
       details: [
-        "Full TerraLedger access",
+        `Full ${BRAND_NAME} access`,
         "Subscription-gated account access",
         "Billing handled on SpencerSoftwaresLLC.com",
       ],
@@ -601,7 +623,7 @@ function TerraLedgerPage() {
       sub: "/year",
       note: "30% off Monthly for the best value for full-time use with stronger long-term savings.",
       details: [
-        "Full TerraLedger access",
+        `Full ${BRAND_NAME} access`,
         "Annual billing value",
         "Billing handled on SpencerSoftwaresLLC.com",
       ],
@@ -627,7 +649,7 @@ function TerraLedgerPage() {
             fontSize: isMobile ? "40px" : "clamp(38px, 6vw, 58px)",
           }}
         >
-          TerraLedger
+          {BRAND_NAME_TM}
         </h1>
         <p
           style={{
@@ -635,9 +657,9 @@ function TerraLedgerPage() {
             fontSize: isMobile ? 16 : 18,
           }}
         >
-          TerraLedger is the flagship software product under Spencer Softwares,
-          designed for companies that need operational control without juggling
-          disconnected systems.
+          {BRAND_NAME_TM} is the flagship software product under Spencer
+          Softwares, designed for companies that need operational control
+          without juggling disconnected systems.
         </p>
       </section>
 
@@ -652,6 +674,7 @@ function TerraLedgerPage() {
             ...cardStyle,
             padding: isMobile ? 22 : 30,
             borderTop: `4px solid ${palette.green}`,
+            textAlign: "center",
           }}
         >
           <div style={eyebrowStyle}>Desktop Download</div>
@@ -662,10 +685,16 @@ function TerraLedgerPage() {
               fontSize: isMobile ? 28 : 34,
             }}
           >
-            Download TerraLedger for Windows
+            Download {BRAND_NAME} for Windows
           </h2>
-          <p style={{ ...sectionTextStyle, maxWidth: 860 }}>
-            Install TerraLedger on your Windows computer to manage quotes,
+          <p
+            style={{
+              ...sectionTextStyle,
+              maxWidth: 860,
+              margin: "0 auto",
+            }}
+          >
+            Install {BRAND_NAME_TM} on your Windows computer to manage quotes,
             invoices, jobs, payroll, bookkeeping, and daily office operations
             from one desktop app.
           </p>
@@ -677,6 +706,7 @@ function TerraLedgerPage() {
               flexWrap: "wrap",
               marginTop: 20,
               flexDirection: isMobile ? "column" : "row",
+              justifyContent: "center",
             }}
           >
             <a
@@ -692,7 +722,7 @@ function TerraLedgerPage() {
                 boxSizing: "border-box",
               }}
             >
-              Download TerraLedger
+              Download {BRAND_NAME}
             </a>
 
             <a
@@ -716,9 +746,13 @@ function TerraLedgerPage() {
               color: palette.sand,
               lineHeight: 1.8,
               fontSize: 14,
+              maxWidth: 560,
+              marginLeft: "auto",
+              marginRight: "auto",
+              textAlign: "center",
             }}
           >
-            Windows desktop app. Download begins from the official Spencer
+            Windows desktop app. Downloads begin from the official Spencer
             Softwares release source.
           </div>
         </div>
@@ -738,7 +772,7 @@ function TerraLedgerPage() {
         >
           <div style={cardStyle}>
             <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
-              What TerraLedger Handles
+              What {BRAND_NAME} Handles
             </h2>
             <div style={{ display: "grid", gap: 12, marginTop: 18 }}>
               {features.map((item) => (
@@ -754,7 +788,7 @@ function TerraLedgerPage() {
               Who It Is For
             </h2>
             <p style={cardTextStyle}>
-              TerraLedger is built for landscaping, hauling, yard material,
+              {BRAND_NAME} is built for landscaping, hauling, yard material,
               field service, and growing local businesses that need reliable
               office software for daily operations.
             </p>
@@ -768,7 +802,7 @@ function TerraLedgerPage() {
                 }}
                 href="#pricing"
               >
-                View TerraLedger Pricing
+                View {BRAND_NAME} Pricing
               </a>
               <a
                 style={{
@@ -781,7 +815,7 @@ function TerraLedgerPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Download TerraLedger
+                Download {BRAND_NAME}
               </a>
             </div>
           </div>
@@ -798,6 +832,7 @@ function TerraLedgerPage() {
           style={{
             ...cardStyle,
             padding: isMobile ? 22 : 28,
+            textAlign: "center",
           }}
         >
           <div style={eyebrowStyle}>Desktop Path</div>
@@ -808,12 +843,18 @@ function TerraLedgerPage() {
               fontSize: isMobile ? 28 : 34,
             }}
           >
-            TerraLedger is moving toward desktop delivery.
+            {BRAND_NAME_TM} is moving toward desktop delivery.
           </h2>
-          <p style={{ ...sectionTextStyle, maxWidth: 860 }}>
+          <p
+            style={{
+              ...sectionTextStyle,
+              maxWidth: 860,
+              margin: "0 auto",
+            }}
+          >
             The purchase flow begins on SpencerSoftwaresLLC.com. From there,
-            TerraLedger can be positioned as a downloadable software product for
-            customer access and installation.
+            {` ${BRAND_NAME_TM} `}can be positioned as a downloadable software
+            product for customer access and installation.
           </p>
 
           <div
@@ -822,6 +863,7 @@ function TerraLedgerPage() {
               gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
               gap: 16,
               marginTop: 20,
+              textAlign: isMobile ? "left" : "center",
             }}
           >
             <div style={panelStyle}>
@@ -833,16 +875,17 @@ function TerraLedgerPage() {
             </div>
             <div style={panelStyle}>
               <div style={miniCardLabelStyle}>Step 2</div>
-              <div style={miniCardTitleStyle}>Download TerraLedger</div>
+              <div style={miniCardTitleStyle}>Download {BRAND_NAME}</div>
               <p style={miniCardTextStyle}>
-                Install the platform through the TerraLedger download path.
+                Install the platform through the official {BRAND_NAME} download
+                path.
               </p>
             </div>
             <div style={panelStyle}>
               <div style={miniCardLabelStyle}>Step 3</div>
               <div style={miniCardTitleStyle}>Sign in and use the app</div>
               <p style={miniCardTextStyle}>
-                Existing customers can continue to use their login access after
+                Existing customers can continue using their login access after
                 install.
               </p>
             </div>
@@ -866,14 +909,14 @@ function TerraLedgerPage() {
             margin: isMobile ? "0 0 26px" : "0 auto 26px",
           }}
         >
-          <div style={eyebrowStyle}>TerraLedger Pricing</div>
+          <div style={eyebrowStyle}>{BRAND_NAME} Pricing</div>
           <h2
             style={{
               ...sectionTitleStyle,
               fontSize: isMobile ? 28 : 36,
             }}
           >
-            Choose the TerraLedger plan that fits your business.
+            Choose the {BRAND_NAME} plan that fits your business.
           </h2>
           <p
             style={{
@@ -881,8 +924,8 @@ function TerraLedgerPage() {
               textAlign: isMobile ? "left" : "center",
             }}
           >
-            TerraLedger pricing lives here so customers go straight from product
-            details to the correct checkout flow.
+            {BRAND_NAME} pricing lives here so customers can go straight from
+            product details to the correct checkout flow.
           </p>
         </div>
 
@@ -974,7 +1017,7 @@ function TerraLedgerPage() {
                     marginTop: 12,
                   }}
                 >
-                  Download TerraLedger
+                  Download {BRAND_NAME}
                 </a>
               </div>
             </div>
@@ -1031,10 +1074,10 @@ function PricingPage() {
                 fontSize: isMobile ? 24 : 28,
               }}
             >
-              TerraLedger
+              {BRAND_NAME_TM}
             </div>
             <p style={pricingMiniTextStyle}>
-              View TerraLedger features, pricing options, and its dedicated
+              View {BRAND_NAME} features, pricing options, and its dedicated
               purchase flow all in one place.
             </p>
             <div style={{ marginTop: 18 }}>
@@ -1047,7 +1090,7 @@ function PricingPage() {
                 }}
                 to="/terraledger#pricing"
               >
-                View TerraLedger Pricing
+                View {BRAND_NAME} Pricing
               </Link>
             </div>
           </div>
@@ -1107,7 +1150,7 @@ function AboutPage() {
             </h2>
             <p style={cardTextStyle}>
               Create software that solves actual work problems instead of adding
-              complexity. TerraLedger is the first step, and it sets the
+              complexity. {BRAND_NAME_TM} is the first step, and it sets the
               direction for the rest of the brand.
             </p>
           </div>
@@ -1119,6 +1162,96 @@ function AboutPage() {
               SpencerSoftwaresLLC.com handles branding, trust, pricing, and
               checkout. The app handles product usage and requires an active
               subscription to unlock access.
+            </p>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+}
+
+function LegalPage() {
+  const isMobile = useIsMobile();
+
+  return (
+    <Layout>
+      <section
+        style={{
+          ...pageHeroStyle,
+          padding: isMobile ? "46px 16px 18px" : "74px 24px 24px",
+        }}
+      >
+        <div style={eyebrowStyle}>Legal</div>
+        <h1
+          style={{
+            ...pageTitleStyle,
+            fontSize: isMobile ? "34px" : "clamp(38px, 6vw, 58px)",
+          }}
+        >
+          Legal and brand information.
+        </h1>
+        <p
+          style={{
+            ...pageTextStyle,
+            fontSize: isMobile ? 16 : 18,
+          }}
+        >
+          This section provides a simple legal reference for the Spencer
+          Softwares brand and {BRAND_NAME_TM}.
+        </p>
+      </section>
+
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "32px 16px" : "40px 24px",
+        }}
+      >
+        <div
+          style={{
+            ...gridTwoStyle,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
+          }}
+        >
+          <div style={cardStyle}>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              Trademark Notice
+            </h2>
+            <p style={cardTextStyle}>
+              {BRAND_NAME_TM} is used as a product and brand name of Spencer
+              Softwares LLC. The “™” designation indicates a claimed trademark.
+            </p>
+          </div>
+
+          <div style={cardStyle}>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              Website Purpose
+            </h2>
+            <p style={cardTextStyle}>
+              SpencerSoftwaresLLC.com exists to present company information,
+              software products, pricing, downloads, and customer access points.
+            </p>
+          </div>
+
+          <div style={cardStyle}>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              Product Access
+            </h2>
+            <p style={cardTextStyle}>
+              Product availability, pricing, and download access may change over
+              time as Spencer Softwares continues to develop and distribute its
+              software products.
+            </p>
+          </div>
+
+          <div style={cardStyle}>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              Copyright
+            </h2>
+            <p style={cardTextStyle}>
+              © 2026 Spencer Softwares LLC. All rights reserved. Product names,
+              branding, site copy, and software materials remain the property of
+              Spencer Softwares LLC unless otherwise stated.
             </p>
           </div>
         </div>
@@ -1396,7 +1529,7 @@ function LoginPage() {
             fontSize: isMobile ? "36px" : "clamp(38px, 6vw, 58px)",
           }}
         >
-          Log in to TerraLedger
+          Log in to {BRAND_NAME}
         </h1>
         <p
           style={{
@@ -1404,7 +1537,7 @@ function LoginPage() {
             fontSize: isMobile ? 16 : 18,
           }}
         >
-          Use this page to route customers into TerraLedger customer access.
+          Use this page to route customers into {BRAND_NAME} customer access.
         </p>
       </section>
 
@@ -1428,7 +1561,7 @@ function LoginPage() {
           </h2>
           <p style={{ ...cardTextStyle, marginBottom: 24 }}>
             Customers with an active subscription should be able to log into
-            TerraLedger from here.
+            {` ${BRAND_NAME} `}from here.
           </p>
 
           <div
@@ -1454,7 +1587,7 @@ function LoginPage() {
                 boxSizing: "border-box",
               }}
             >
-              Go To TerraLedger Login
+              Go To {BRAND_NAME} Login
             </a>
 
             <a
@@ -1468,7 +1601,7 @@ function LoginPage() {
                 boxSizing: "border-box",
               }}
             >
-              Download TerraLedger
+              Download {BRAND_NAME}
             </a>
           </div>
         </div>
@@ -2092,6 +2225,7 @@ export default function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/legal" element={<LegalPage />} />
       </Routes>
     </BrowserRouter>
   );
