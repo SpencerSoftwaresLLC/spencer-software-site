@@ -236,26 +236,6 @@ function Layout({ children }) {
                 {BRAND_NAME_TM}
               </Link>
             </div>
-            <div>
-              <a
-                style={footerLink}
-                href={TERRALEDGER_LOGIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Customer Login
-              </a>
-            </div>
-            <div>
-              <a
-                style={footerLink}
-                href={TERRALEDGER_DOWNLOAD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Download {BRAND_NAME}
-              </a>
-            </div>
           </div>
 
           <div>
@@ -278,16 +258,14 @@ function Layout({ children }) {
           </div>
 
           <div>
-            <div style={footerTitle}>Legal & Business</div>
-            <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              {BRAND_NAME_TM} is a trademark of Spencer Softwares LLC.
+            <div style={footerTitle}>Legal</div>
+            <div>
+              <Link style={footerLink} to="/legal">
+                Terms & Legal
+              </Link>
             </div>
-            <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              SpencerSoftwaresLLC.com serves as the company website for product
-              information, pricing, customer access, and software distribution.
-            </div>
-            <div style={{ color: palette.sand, lineHeight: 1.8 }}>
-              © 2026 Spencer Softwares LLC. All rights reserved.
+            <div style={{ marginTop: 12, color: palette.sand, fontSize: 14 }}>
+              © 2026 Spencer Softwares LLC
             </div>
           </div>
         </div>
@@ -415,8 +393,8 @@ function HomePage() {
                   lineHeight: 1.6,
                 }}
               >
-                Customers subscribe through SpencerSoftwaresLLC.com, then
-                {` ${BRAND_NAME} `}access unlocks.
+                Customers subscribe through SpencerSoftwaresLLC.com, then{" "}
+                {BRAND_NAME} access unlocks.
               </div>
             </div>
             <div style={{ ...panelStyle, textAlign: "center" }}>
@@ -568,8 +546,8 @@ function HomePage() {
               <div style={miniCardLabelStyle}>Access</div>
               <div style={miniCardTitleStyle}>Customer Login</div>
               <p style={miniCardTextStyle}>
-                Existing users can still sign in through {BRAND_NAME}
-                {` `}customer access.
+                Existing users can still sign in through {BRAND_NAME} customer
+                access.
               </p>
               <a
                 href={TERRALEDGER_LOGIN_URL}
@@ -853,7 +831,7 @@ function TerraLedgerPage() {
             }}
           >
             The purchase flow begins on SpencerSoftwaresLLC.com. From there,
-            {` ${BRAND_NAME_TM} `}can be positioned as a downloadable software
+            {BRAND_NAME_TM} can be positioned as a downloadable software
             product for customer access and installation.
           </p>
 
@@ -1188,7 +1166,7 @@ function LegalPage() {
             fontSize: isMobile ? "34px" : "clamp(38px, 6vw, 58px)",
           }}
         >
-          Legal and brand information.
+          Legal & Terms
         </h1>
         <p
           style={{
@@ -1196,8 +1174,8 @@ function LegalPage() {
             fontSize: isMobile ? 16 : 18,
           }}
         >
-          This section provides a simple legal reference for the Spencer
-          Softwares brand and {BRAND_NAME_TM}.
+          This page outlines the legal structure, ownership, and usage terms
+          related to Spencer Softwares LLC and its products.
         </p>
       </section>
 
@@ -1215,45 +1193,81 @@ function LegalPage() {
         >
           <div style={cardStyle}>
             <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              Company Information
+            </h2>
+            <p style={cardTextStyle}>
+              Spencer Softwares LLC is a software company providing business
+              tools, applications, and digital services through its website and
+              associated platforms.
+            </p>
+          </div>
+
+          <div style={cardStyle}>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
+              Product Ownership
+            </h2>
+            <p style={cardTextStyle}>
+              {BRAND_NAME_TM} is a product developed and operated by Spencer
+              Softwares LLC. All product functionality, design, and systems are
+              owned and maintained by the company.
+            </p>
+          </div>
+
+          <div style={cardStyle}>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
               Trademark Notice
             </h2>
             <p style={cardTextStyle}>
-              {BRAND_NAME_TM} is used as a product and brand name of Spencer
-              Softwares LLC. The “™” designation indicates a claimed trademark.
+              {BRAND_NAME_TM} is a claimed trademark of Spencer Softwares LLC.
+              Unauthorized use of the name or branding may be restricted under
+              applicable laws.
             </p>
           </div>
 
           <div style={cardStyle}>
             <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
-              Website Purpose
+              Website Usage
             </h2>
             <p style={cardTextStyle}>
-              SpencerSoftwaresLLC.com exists to present company information,
-              software products, pricing, downloads, and customer access points.
+              SpencerSoftwaresLLC.com serves as the primary platform for product
+              information, pricing, account access, and software distribution.
             </p>
           </div>
 
           <div style={cardStyle}>
             <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
-              Product Access
+              Service Access
             </h2>
             <p style={cardTextStyle}>
-              Product availability, pricing, and download access may change over
-              time as Spencer Softwares continues to develop and distribute its
-              software products.
+              Access to {BRAND_NAME} may require an active subscription.
+              Features, pricing, and availability may change over time as the
+              platform evolves.
             </p>
           </div>
 
           <div style={cardStyle}>
             <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28 }}>
-              Copyright
+              Limitation of Liability
             </h2>
             <p style={cardTextStyle}>
-              © 2026 Spencer Softwares LLC. All rights reserved. Product names,
-              branding, site copy, and software materials remain the property of
-              Spencer Softwares LLC unless otherwise stated.
+              Spencer Softwares LLC is not liable for any indirect or incidental
+              damages resulting from the use or inability to use its software.
+              Users are responsible for how the software is applied in their
+              business operations.
             </p>
           </div>
+        </div>
+
+        <div
+          style={{
+            marginTop: 40,
+            textAlign: "center",
+            color: palette.sand,
+            fontSize: 14,
+            lineHeight: 1.8,
+          }}
+        >
+          © 2026 Spencer Softwares LLC. All rights reserved.
         </div>
       </section>
     </Layout>
@@ -1560,8 +1574,8 @@ function LoginPage() {
             Customer Login Portal
           </h2>
           <p style={{ ...cardTextStyle, marginBottom: 24 }}>
-            Customers with an active subscription should be able to log into
-            {` ${BRAND_NAME} `}from here.
+            Customers with an active subscription should be able to log into{" "}
+            {BRAND_NAME} from here.
           </p>
 
           <div
