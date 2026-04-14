@@ -119,6 +119,9 @@ function Layout({ children }) {
               <Link style={{ ...navLinkStyle, width: isMobile ? "100%" : "auto" }} to="/about">
                 About
               </Link>
+              <Link style={{ ...navLinkStyle, width: isMobile ? "100%" : "auto" }} to="/help">
+                Help
+              </Link>
               <Link style={{ ...navLinkStyle, width: isMobile ? "100%" : "auto" }} to="/contact">
                 Contact
               </Link>
@@ -147,7 +150,6 @@ function Layout({ children }) {
               gap: 10,
             }}
           >
-
             <div style={{ position: "relative", width: isMobile ? "100%" : "auto" }}>
               <button
                 type="button"
@@ -233,6 +235,11 @@ function Layout({ children }) {
               </Link>
             </div>
             <div>
+              <Link style={footerLink} to="/help">
+                Help
+              </Link>
+            </div>
+            <div>
               <Link style={footerLink} to="/contact">
                 Contact
               </Link>
@@ -263,6 +270,27 @@ function Layout({ children }) {
 
 function HomePage() {
   const isMobile = useIsMobile();
+
+  const testimonials = [
+    {
+      quote:
+        "TerraLedger brings quotes, jobs, invoices, and office tracking into one place so the workday feels a lot less scattered.",
+      name: "Early User Feedback",
+      role: "Field-service workflow review",
+    },
+    {
+      quote:
+        "The layout feels built for real business operations instead of generic software. It follows the way work actually moves.",
+      name: "Beta Feedback",
+      role: "Operations-focused business owner",
+    },
+    {
+      quote:
+        "Having billing, job flow, and payroll direction under one system makes TerraLedger feel much more practical than juggling separate tools.",
+      name: "Product Review",
+      role: "Small business operations perspective",
+    },
+  ];
 
   return (
     <Layout>
@@ -546,6 +574,79 @@ function HomePage() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "0 16px 40px" : "0 24px 56px",
+        }}
+      >
+        <div
+          style={{
+            ...sectionHeadingWrapCentered,
+            textAlign: isMobile ? "left" : "center",
+            margin: isMobile ? "0 0 26px" : "0 auto 26px",
+          }}
+        >
+          <div style={eyebrowStyle}>Customer Feedback</div>
+          <h2
+            style={{
+              ...sectionTitleStyle,
+              fontSize: isMobile ? 28 : 36,
+            }}
+          >
+            What early feedback is saying.
+          </h2>
+          <p
+            style={{
+              ...sectionTextStyle,
+              textAlign: isMobile ? "left" : "center",
+            }}
+          >
+            Trust matters. This section gives visitors a quick feel for how
+            TerraLedger is being received and why the platform stands out.
+          </p>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
+            gap: 20,
+          }}
+        >
+          {testimonials.map((item) => (
+            <div key={item.quote} style={testimonialCardStyle}>
+              <div style={testimonialQuoteMarkStyle}>“</div>
+              <p style={testimonialQuoteStyle}>{item.quote}</p>
+              <div style={testimonialMetaWrapStyle}>
+                <div style={testimonialNameStyle}>{item.name}</div>
+                <div style={testimonialRoleStyle}>{item.role}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div
+          style={{
+            marginTop: 22,
+            display: "flex",
+            justifyContent: isMobile ? "stretch" : "center",
+          }}
+        >
+          <Link
+            to="/help"
+            style={{
+              ...navButtonSecondary,
+              width: isMobile ? "100%" : "auto",
+              textAlign: "center",
+              boxSizing: "border-box",
+            }}
+          >
+            Learn How TerraLedger Works
+          </Link>
         </div>
       </section>
     </Layout>
@@ -1128,6 +1229,312 @@ function AboutPage() {
               checkout. The app handles product usage and requires an active
               subscription to unlock access.
             </p>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+}
+
+function HelpPage() {
+  const isMobile = useIsMobile();
+
+  const setupSteps = [
+    {
+      step: "Step 1",
+      title: `Choose your ${BRAND_NAME} plan`,
+      text: "Start by selecting the monthly or yearly plan that fits your business needs.",
+    },
+    {
+      step: "Step 2",
+      title: "Complete your purchase",
+      text: "Use the website checkout flow to activate access before using the software.",
+    },
+    {
+      step: "Step 3",
+      title: `Download ${BRAND_NAME}`,
+      text: "Install the Windows version from the official download link once your access is set.",
+    },
+    {
+      step: "Step 4",
+      title: "Log in and set up your business",
+      text: "Enter company information, customers, and the basics you need to start using the platform.",
+    },
+  ];
+
+  const firstTasks = [
+    "Add your company and business info",
+    "Create your first customer",
+    "Build your first quote",
+    "Convert quotes into jobs",
+    "Convert jobs into invoices",
+    "Track payments and daily office activity",
+  ];
+
+  const faqs = [
+    {
+      question: `How do I buy ${BRAND_NAME}?`,
+      answer:
+        "Go to the TerraLedger product page, choose Monthly or Yearly pricing, and complete checkout through the site.",
+    },
+    {
+      question: `How do I start using ${BRAND_NAME} after I buy it?`,
+      answer:
+        "After purchase, download the Windows app, install it, and sign in with your customer access.",
+    },
+    {
+      question: `What kind of businesses is ${BRAND_NAME} built for?`,
+      answer:
+        "It is built for landscaping, hauling, yard material, field service, and similar businesses that need better operational control.",
+    },
+    {
+      question: "What should I set up first inside the app?",
+      answer:
+        "Start with company information, then customers, quotes, jobs, invoices, and any employee or payroll setup you need.",
+    },
+  ];
+
+  return (
+    <Layout>
+      <section
+        style={{
+          ...pageHeroStyle,
+          padding: isMobile ? "46px 16px 18px" : "74px 24px 24px",
+        }}
+      >
+        <div style={eyebrowStyle}>Help</div>
+        <h1
+          style={{
+            ...pageTitleStyle,
+            fontSize: isMobile ? "34px" : "clamp(38px, 6vw, 58px)",
+          }}
+        >
+          Help, setup, and purchase guidance for {BRAND_NAME_TM}.
+        </h1>
+        <p
+          style={{
+            ...pageTextStyle,
+            fontSize: isMobile ? 16 : 18,
+          }}
+        >
+          This page walks customers through how to purchase {BRAND_NAME},
+          download it, log in, and start using it with less confusion.
+        </p>
+      </section>
+
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "24px 16px 18px" : "28px 24px 24px",
+        }}
+      >
+        <div
+          style={{
+            ...cardStyle,
+            padding: isMobile ? 22 : 28,
+            textAlign: "center",
+          }}
+        >
+          <div style={eyebrowStyle}>Quick Start</div>
+          <h2
+            style={{
+              ...sectionTitleStyle,
+              marginTop: 14,
+              fontSize: isMobile ? 28 : 34,
+            }}
+          >
+            How to get started with {BRAND_NAME}.
+          </h2>
+          <p
+            style={{
+              ...sectionTextStyle,
+              maxWidth: 860,
+              margin: "0 auto",
+            }}
+          >
+            Use this path if you are brand new and want the fastest route from
+            checkout to working inside the software.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(4, minmax(0, 1fr))",
+              gap: 16,
+              marginTop: 22,
+              textAlign: isMobile ? "left" : "left",
+            }}
+          >
+            {setupSteps.map((item) => (
+              <div key={item.title} style={panelStyle}>
+                <div style={miniCardLabelStyle}>{item.step}</div>
+                <div style={miniCardTitleStyle}>{item.title}</div>
+                <p style={miniCardTextStyle}>{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              gap: 14,
+              flexWrap: "wrap",
+              justifyContent: "center",
+              marginTop: 22,
+              flexDirection: isMobile ? "column" : "row",
+            }}
+          >
+            <Link
+              to="/terraledger#pricing"
+              style={{
+                ...navButtonPrimary,
+                width: isMobile ? "100%" : "auto",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+            >
+              View Pricing
+            </Link>
+            <a
+              href={TERRALEDGER_DOWNLOAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...navButtonSecondary,
+                width: isMobile ? "100%" : "auto",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+            >
+              Download {BRAND_NAME}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "20px 16px" : "20px 24px 24px",
+        }}
+      >
+        <div
+          style={{
+            ...gridTwoStyle,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))",
+          }}
+        >
+          <div style={cardStyle}>
+            <div style={eyebrowStyle}>Purchase Help</div>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28, marginTop: 14 }}>
+              How to purchase {BRAND_NAME}
+            </h2>
+            <p style={cardTextStyle}>
+              Start on the TerraLedger page, review the Monthly and Yearly plan
+              options, then use the checkout link that matches the plan you want.
+              Once your access is active, you can download and use the software.
+            </p>
+            <div style={{ marginTop: 20, display: "grid", gap: 12 }}>
+              <Link
+                style={{
+                  ...navButtonPrimary,
+                  width: "100%",
+                  textAlign: "center",
+                  boxSizing: "border-box",
+                }}
+                to="/terraledger"
+              >
+                Go to TerraLedger
+              </Link>
+            </div>
+          </div>
+
+          <div style={cardStyle}>
+            <div style={eyebrowStyle}>First Tasks</div>
+            <h2 style={{ ...cardHeadingStyle, fontSize: isMobile ? 24 : 28, marginTop: 14 }}>
+              What to do first inside the app
+            </h2>
+            <div style={{ display: "grid", gap: 12, marginTop: 16 }}>
+              {firstTasks.map((item) => (
+                <div key={item} style={listItemStyle}>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        style={{
+          ...sectionStyle,
+          padding: isMobile ? "12px 16px 32px" : "10px 24px 40px",
+        }}
+      >
+        <div
+          style={{
+            ...cardStyle,
+            padding: isMobile ? 22 : 28,
+          }}
+        >
+          <div style={eyebrowStyle}>FAQ</div>
+          <h2
+            style={{
+              ...sectionTitleStyle,
+              marginTop: 14,
+              fontSize: isMobile ? 28 : 34,
+            }}
+          >
+            Common questions
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gap: 16,
+              marginTop: 18,
+            }}
+          >
+            {faqs.map((item) => (
+              <div key={item.question} style={faqItemStyle}>
+                <div style={faqQuestionStyle}>{item.question}</div>
+                <div style={faqAnswerStyle}>{item.answer}</div>
+              </div>
+            ))}
+          </div>
+
+          <div
+            style={{
+              marginTop: 24,
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              gap: 12,
+            }}
+          >
+            <Link
+              to="/contact"
+              style={{
+                ...navButtonPrimary,
+                width: isMobile ? "100%" : "auto",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+            >
+              Contact Spencer Softwares
+            </Link>
+            <a
+              href={TERRALEDGER_LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...navButtonSecondary,
+                width: isMobile ? "100%" : "auto",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+            >
+              Customer Login
+            </a>
           </div>
         </div>
       </section>
@@ -2205,6 +2612,71 @@ const miniCardTextStyle = {
   margin: "10px 0 0",
 };
 
+const testimonialCardStyle = {
+  border: `1px solid ${palette.border}`,
+  borderRadius: 24,
+  padding: 24,
+  background:
+    "linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03))",
+  boxShadow: "0 14px 30px rgba(0,0,0,0.22)",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  minHeight: 240,
+};
+
+const testimonialQuoteMarkStyle = {
+  fontSize: 44,
+  lineHeight: 1,
+  color: palette.orangeSoft,
+  fontWeight: 900,
+};
+
+const testimonialQuoteStyle = {
+  color: palette.text,
+  lineHeight: 1.85,
+  opacity: 0.94,
+  margin: "8px 0 22px",
+  flex: 1,
+};
+
+const testimonialMetaWrapStyle = {
+  borderTop: `1px solid ${palette.border}`,
+  paddingTop: 14,
+};
+
+const testimonialNameStyle = {
+  fontWeight: 800,
+  fontSize: 16,
+};
+
+const testimonialRoleStyle = {
+  color: palette.sand,
+  marginTop: 6,
+  fontSize: 14,
+  lineHeight: 1.6,
+};
+
+const faqItemStyle = {
+  border: `1px solid ${palette.border}`,
+  borderRadius: 18,
+  padding: "18px 18px",
+  background: `linear-gradient(180deg, ${palette.panel}, ${palette.panelSoft})`,
+};
+
+const faqQuestionStyle = {
+  fontWeight: 800,
+  fontSize: 18,
+  lineHeight: 1.4,
+};
+
+const faqAnswerStyle = {
+  marginTop: 10,
+  color: palette.text,
+  opacity: 0.92,
+  lineHeight: 1.8,
+};
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -2213,6 +2685,7 @@ export default function App() {
         <Route path="/terraledger" element={<TerraLedgerPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/help" element={<HelpPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/legal" element={<LegalPage />} />
